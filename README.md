@@ -38,13 +38,13 @@ A new Base GetX Flutter project.
 - ```models```: Model common.
 - ```pages```: The directory contains screen of project.
     - Subpage structure
-           - ```const```: Config use only in page.
-           - ```models```: Contain all model of page.
-           - ```widgets```: Widget of page.
-           - ```services```: Handle call api.
-           - ```page_controller.dart```: File handle logic page.
-           - ```page_view.dart```: File view of page.
-           - ```page_bindings.dart```: File binding of page.
+        - ```const```: Config use only in page.
+        - ```models```: Contain all model of page.
+        - ```widgets```: Widget of page.
+        - ```services```: Handle call api.
+        - ```page_controller.dart```: File handle logic page.
+        - ```page_view.dart```: File view of page.
+        - ```page_bindings.dart```: File binding of page.
 - ```routes```: Init router, navigator page.
 - ```services```: Init services api, firebase, setting...
 - ```utils```: File common for app.

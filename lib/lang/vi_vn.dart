@@ -1,0 +1,78 @@
+const Map<String, String> langVi = {
+  'sign_in': 'Đăng nhập',
+  'account': 'Tên đăng nhập',
+  'email': 'Email',
+  'password': 'Mật khẩu',
+  'forgot_password': 'Quên mật khẩu',
+  'sign_up': 'Đăng ký',
+  'language': 'Ngôn ngữ',
+  'lang_vi': 'Tiếng Việt',
+  'lang_us': 'Tiếng Anh',
+  'yes': 'Có',
+  'no': 'Không',
+  'error': 'Lỗi',
+  'success': 'Thành công',
+  'notification': 'Thông báo',
+  'phone': 'Số điện thoại',
+  'personal_info': 'Thông tin cá nhân',
+  'dark_mode': 'Chế độ tối',
+  'light_mode': 'Chế độ sáng',
+  'or': 'Hoặc',
+  'you_do_not_have_an_account': 'Bạn chưa có tài khoản?',
+  'do_you_already_have_an_account': 'Bạn đã có tài khoản?',
+  'full_name': 'Họ và tên',
+  'confirm': 'Xác nhận',
+  'update': 'Cập nhật',
+  'address': 'Địa chỉ',
+  'dob': 'Ngày sinh',
+  'gender': 'GIới tính',
+  'male': 'Nam',
+  'female': 'Nữ',
+  'other': 'Khác',
+  'msg_update': 'Vui lòng cập nhật',
+  'upload': 'Tải lên',
+  'take_a_photo': 'Camera',
+  'enter_dob':'Nhập ngày sinh',
+
+  //OTP
+  'otp_verification': 'Xác nhận mã OTP',
+  'otp_sent_code':
+      'Vui lòng nhập mã xác thực đã gửi về số điện thoại của bạn @phone',
+  'otp_expires_in': 'Mã xác nhận hết hạn trong',
+  'otp_expired': 'Mã xác nhận đã hết hạn',
+  'otp_resend': 'Gửi lại mã OTP',
+
+  //BottomBar.
+  'navbar_notice': 'Thông Báo',
+  'navbar_report': 'Báo Cáo',
+  'navbar_home': 'Tổng Quan',
+  'navbar_unit': 'Đơn Vị',
+  'navbar_user': 'Cá Nhân',
+
+  //Message error.
+  'msg_have_error': 'Đã có lỗi xảy ra, Vui lòng thử lại!',
+  'msg_session_timeout': 'Hết phiên làm việc vui lòng đăng nhập lại!',
+  'msg_empty_reason': 'Lý do là bắt buộc',
+  'msg_submission_date_invalid': 'Ngày trình có định dạng không đúng',
+  'msg_error_date_between': 'Từ ngày - Đến ngày không được quá 365 ngày',
+  'msg_error_date1': 'Thời gian từ ngày không được lớn hơn đến ngày',
+  'msg_error_date_format': 'Ngày có định dạng không đúng',
+
+  //Message notify.
+  'msg_verification_code':
+      'Vui lòng nhập mã xác thực đã gửi đến email đăng ký tài khoản của bạn',
+  'msg_required_code': 'Vui lòng nhập mã xác thực',
+  'msg_verification_email': 'Vui lòng nhập email đã đăng ký tài khoản của bạn',
+  'msg_empty': '@label là bắt buộc',
+  'msg_invalid': '@label không hợp lệ',
+  'msg_download_file': 'File không hỗ trợ tải xuống!',
+  'msg_length_pass': '@label phải chứa ít nhất 8 kí tự',
+  'msg_pass_invalid':
+      '@label phải chứa ký tự hoa, thường, số và ký tự đặc biệt',
+  'msg_match_pass': 'Mật khẩu xác nhận khác với Mật khẩu mới',
+  'msg_required': 'Vui lòng nhập thông tin',
+  'msg_error_reason': 'Bạn chưa nhập lý do',
+  'msg_close_app': 'Bạn có muốn thoát không?',
+  'msg_pass_rule1':
+      'Mật khẩu phải từ 8 - 50 ký tự, chứa ký tự hoa, thường, số và ký tự đặc biệt bao gồm: *@#\$%^&+=',
+};

@@ -52,7 +52,13 @@ class ProfileController extends GetxController {
     }
   }
 
-  void updateProfile() {}
+  void updateProfile() async{
+    AppUtils.showSuccess('message');
+    await 1.delay();
+    Get.back();
+    await 0.5.delay();
+    Get.back();
+  }
 
   ///Image picker.
   late File file;

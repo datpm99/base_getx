@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import 'app_theme.dart';
 
 class Styles {
@@ -43,11 +44,22 @@ class Styles {
   static const grey13 = Color(0xff8E8EA1);
   static const grey14 = Color(0xff4B506D);
   static const grey15 = Color(0xff7A7C80);
+  static const grey16 = Color(0xfff9faff);
+  static const grey17 = Color(0xffB4BBC2);
+  static const grey18 = Color(0xFFF2F5F9);
+  static const grey19 = Color(0xFFB4C5D1);
+  static const grey20 = Color(0xFF808080);
+  static const grey21 = Color(0xFF757575);
+  static const grey22 = Color(0xFFDADADA);
+  static const grey23 = Color(0xFF777777);
+  static const grey24 = Color(0xFF9D9D9D);
+  static const grey25 = Color(0xFFF3F3F3);
 
   //Black.
   static const black1 = Color(0xff252733);
   static const black2 = Color(0xff22242C);
   static const black3 = Color(0xff323F4B);
+  static const black4 = Color(0xff778390);
 
   //Blue.
   static const blue1 = Color(0xffEFF8FF);
@@ -58,6 +70,9 @@ class Styles {
   static const blue6 = Color(0xff00C3F9);
   static const blue7 = Color(0xff0FAFE4);
   static const blue8 = Color(0xffd9f3fb);
+  static const blue9 = Color(0xff203afb);
+  static const blue10 = Color(0xff4600D9);
+  static const blue11 = Color(0xff345FFB);
 
   //Red.
   static const red1 = Color(0xffFFDBDB);
@@ -65,23 +80,45 @@ class Styles {
   static const red3 = Color(0xffF41941);
   static const red4 = Color(0xffFF1414);
   static const red5 = Color(0xffF15642);
+  static const red6 = Color(0xffff9781);
+  static const red7 = Color(0xffe43649);
+  static const red8 = Color(0xffF12727);
 
   //Purple.
   static const purple1 = Color(0xff6160DC);
   static const purple2 = Color(0xff1C49E9);
   static const purple3 = Color(0xff4A50E2);
+  static const purple4 = Color(0xff8998fe);
+  static const purple5 = Color(0xffE8E6FD);
+  static const purple6 = Color(0xff5959fc);
+  static const purple7 = Color(0xff510AD7);
+  static const purple8 = Color(0xff7900F5);
 
   //Green.
   static const green1 = Color(0xffDBFFFF);
   static const green2 = Color(0xff20C2C4);
+  static const green3 = Color(0xff73d7d3);
+  static const green4 = Color(0xff45c7db);
+  static const green5 = Color(0xff22ce9a);
+  static const green6 = Color(0xFF2B5266);
+  static const green7 = Color(0xFF18CF18);
 
   //Yellow.
   static const yellow = Color(0xffFFAF2E);
   static const yellow1 = Color(0xffFCD405);
   static const yellow2 = Color(0xffFFFBDC);
+  static const yellow3 = Color(0xfff4b428);
+  static const yellow4 = Color(0xfff3b45c);
+  static const yellow5 = Color(0xffFBC800);
+
+  //Orange.
+  static const orange = Color(0xfffc4a1a);
 
   //Pink.
   static const pink = Color(0xffF028A0);
+  static const pink2 = Color(0xffff8080);
+  static const pink3 = Color(0xffFFF6F7);
+  static const pink4 = Color(0xffFCD8DC);
 
   ///TextStyles.
   //Small.
@@ -194,6 +231,17 @@ class Styles {
         color: Color.fromRGBO(0, 0, 0, 0.15),
         blurRadius: 8,
         offset: Offset(0, 4),
+      ),
+    ];
+  }
+
+  static List<BoxShadow> boxShadow2() {
+    return [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.2),
+        blurRadius: 4,
+        spreadRadius: 1,
+        offset: const Offset(0, 0),
       ),
     ];
   }

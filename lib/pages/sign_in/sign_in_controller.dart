@@ -52,4 +52,11 @@ class SignInController extends GetxController {
 
     AppUtils.showMessApi(result, '_login');
   }
+
+  @override
+  void onReady() {
+    super.onReady();
+    phone.value = '0987654321';
+    password.value = '123456';
+  }
 }

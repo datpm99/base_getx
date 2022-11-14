@@ -12,11 +12,13 @@ class DefaultButton extends StatelessWidget {
     this.width = 150,
     this.height = 48,
     this.radius = 30,
+    this.isUpper = true,
   }) : super(key: key);
   final String text;
   final VoidCallback onTap;
   final Color color;
   final double width, height, radius;
+  final bool isUpper;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class DefaultButton extends StatelessWidget {
           shape: Styles.borderDialog(radius: radius),
         ),
         child: AutoSizeText(
-          text.tr.toUpperCase(),
+          (isUpper) ? text.tr.toUpperCase() : text.tr,
           style: Styles.normalTextW700(color: Colors.white),
           maxLines: 1,
           minFontSize: 8,

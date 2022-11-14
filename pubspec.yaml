@@ -51,30 +51,22 @@ dependencies:
   flutter_native_splash: 2.1.6
   url_launcher: 6.1.2
 
-  #FireBase.
-#  firebase_core: 1.17.0
-#  firebase_messaging: 11.4.0
-#  firebase_dynamic_links: 4.2.3
-
-  #Notification.
-#  flutter_local_notifications: 9.5.3+1
-
-  #Authentication.
-#  local_auth: 2.0.2
-
   #Response.
   auto_size_text: 3.0.0
   flutter_screenutil: 5.5.3+1
 
   #Image and File.
   image_picker: ^0.8.4
-#  file_saver: 0.1.0
-#  flutter_exif_rotation: 0.5.1
+  flutter_svg: 1.0.3
 
   #Util.
-#  dotted_border: 2.0.0+2
-#  flutter_pdfview: 1.2.2
-#  carousel_slider: 4.1.1
+  fl_chart: 0.55.2
+  lottie: 1.4.2
+  confetti: 0.6.0
+  showcaseview: ^1.0.0
+
+  #Animation.
+  flutter_staggered_animations: 1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +94,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/jsons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

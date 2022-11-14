@@ -1,5 +1,5 @@
-import 'package:base_getx/const/theme/styles.dart';
 import 'package:flutter/material.dart';
+import '/const/theme/styles.dart';
 
 class CircleAvatarWidget extends StatelessWidget {
   const CircleAvatarWidget({

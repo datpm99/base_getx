@@ -5,7 +5,7 @@ import 'models/nav_data.dart';
 
 class RootController extends GetxController {
   List<NavItemData> lstNav = [];
-  RxInt selectedNav = 1.obs;
+  RxInt selectedNav = 2.obs;
   final _pages = <Widget>[];
   late NavItemData _currentModel;
 
@@ -44,7 +44,7 @@ class RootController extends GetxController {
       navKey.currentState!.pop();
       return Future.value(false);
     } else {
-      final result = await Get.dialog(const ExitDialog(title: 'msg_close_app'));
+      final result = await Get.dialog(ExitDialog(title: 'msg_close_app'.tr));
       if (result != null && result) return Future.value(true);
     }
     return Future.value(false);

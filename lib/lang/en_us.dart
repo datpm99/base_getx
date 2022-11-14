@@ -43,11 +43,10 @@ const Map<String, String> langEn = {
   'otp_resend': 'Resend OTP',
 
   //BottomBar.
-  'navbar_notice': 'Notice',
-  'navbar_report': 'Report',
+  'navbar_animation': 'Animation',
+  'navbar_utility': 'Utility',
   'navbar_home': 'Home',
-  'navbar_unit': 'Unit',
-  'navbar_user': 'User',
+  'navbar_setting': 'Setting',
 
   //Message error.
   'msg_have_error': 'Something went wrong, please try again!',

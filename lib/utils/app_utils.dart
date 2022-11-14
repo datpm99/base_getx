@@ -253,4 +253,10 @@ class AppUtils {
     if (phone.length > 6) phone = '${phone.substring(0, 7)}***';
     return phone;
   }
+
+  static String rdImg() {
+    int rd = Random().nextInt(50);
+    if (rd == 0) rd = 1;
+    return 'assets/icons/ic_$rd.png';
+  }
 }

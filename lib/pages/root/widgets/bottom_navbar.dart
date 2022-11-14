@@ -13,7 +13,8 @@ class BottomNavBar extends GetView<RootController> {
           (e) => BottomNavigationBarItem(
             label: e.name.tr,
             icon: Image.asset(e.icon, width: 24, color: Colors.grey),
-            activeIcon: Image.asset(e.icon, width: 24, color: Styles.blue4),
+            activeIcon: Image.asset(e.iconActive, width: 24, color: Styles.blue4),
+            backgroundColor: Colors.white,
           ),
         )
         .toList();
@@ -22,14 +23,17 @@ class BottomNavBar extends GetView<RootController> {
         items: items,
         elevation: 8,
         iconSize: 18,
-        type: BottomNavigationBarType.fixed,
+        //type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
         backgroundColor: Colors.white,
         onTap: controller.onTapNav,
         currentIndex: controller.selectedNav.value,
         selectedItemColor: Styles.blue4,
-        unselectedItemColor: Styles.grey10,
-        unselectedLabelStyle: Styles.normalText(size: 11),
-        selectedLabelStyle: Styles.smallTextW600(),
+        unselectedItemColor: Styles.grey13,
+        unselectedLabelStyle: Styles.normalText(size: 10),
+        selectedLabelStyle: Styles.smallTextW500(),
       ),
     );
   }

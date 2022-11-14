@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '/pages/pages.dart';
 import '/routes/routes.dart';
 
 class NavKeys {
-  static const int notice = 0;
-  static const int report = 1;
+  static const int animation = 0;
+  static const int utility = 1;
   static const int home = 2;
-  static const int unit = 3;
-  static const int user = 4;
+  static const int chart = 3;
+  static const int setting = 4;
 }
 
 class NavItem {
@@ -29,6 +30,7 @@ class NavItem {
 class NavItemData {
   final String name;
   final String icon;
+  final String iconActive;
   final String route;
   final int idNav;
   final NavItem navItem;
@@ -36,6 +38,7 @@ class NavItemData {
   NavItemData({
     required this.name,
     required this.icon,
+    required this.iconActive,
     required this.navItem,
     required this.route,
     required this.idNav,
@@ -45,36 +48,39 @@ class NavItemData {
 class NavData {
   final List<NavItemData> myData = [
     NavItemData(
-      name: 'navbar_notice',
-      route: Routes.notice,
-      icon: 'assets/icons/ic_notice.png',
-      idNav: NavKeys.notice,
+      name: 'navbar_animation',
+      route: Routes.animation,
+      icon: 'assets/icons/ic_animation.png',
+      iconActive: 'assets/icons/ic_animation_active.png',
+      idNav: NavKeys.animation,
       navItem: NavItem(
-        navKey: NavKeys.notice,
+        navKey: NavKeys.animation,
         getPage: GetPage(
-          name: Routes.notice,
-          page: () => const NoticeView(),
-          binding: NoticeBinding(),
+          name: Routes.animation,
+          page: () => const AnimationView(),
+          binding: AnimationBinding(),
         ),
       ),
     ),
     NavItemData(
-      name: 'navbar_report',
-      route: Routes.report,
-      icon: 'assets/icons/ic_report.png',
-      idNav: NavKeys.report,
+      name: 'navbar_utility',
+      route: Routes.utility,
+      icon: 'assets/icons/ic_utility.png',
+      iconActive: 'assets/icons/ic_utility_active.png',
+      idNav: NavKeys.utility,
       navItem: NavItem(
-        navKey: NavKeys.report,
+        navKey: NavKeys.utility,
         getPage: GetPage(
-          name: Routes.report,
-          page: () => const ReportView(),
-          binding: ReportBinding(),
+          name: Routes.utility,
+          page: () => const UtilityView(),
+          binding: UtilityBinding(),
         ),
       ),
     ),
     NavItemData(
       name: 'navbar_home',
       icon: 'assets/icons/ic_home.png',
+      iconActive: 'assets/icons/ic_home_active.png',
       route: Routes.home,
       idNav: NavKeys.home,
       navItem: NavItem(
@@ -87,30 +93,32 @@ class NavData {
       ),
     ),
     NavItemData(
-      name: 'navbar_unit',
-      icon: 'assets/icons/ic_unit.png',
-      route: Routes.unit,
-      idNav: NavKeys.unit,
+      name: 'Chart',
+      icon: 'assets/icons/ic_chart.png',
+      iconActive: 'assets/icons/ic_chart_active.png',
+      route: Routes.chart,
+      idNav: NavKeys.chart,
       navItem: NavItem(
-        navKey: NavKeys.unit,
+        navKey: NavKeys.chart,
         getPage: GetPage(
-          name: Routes.unit,
-          page: () => const UnitView(),
-          binding: UnitBinding(),
+          name: Routes.chart,
+          page: () => const ChartView(),
+          binding: ChartBinding(),
         ),
       ),
     ),
     NavItemData(
-      name: 'navbar_user',
-      icon: 'assets/icons/ic_user.png',
-      route: Routes.user,
-      idNav: NavKeys.user,
+      name: 'navbar_setting',
+      icon: 'assets/icons/ic_setting.png',
+      iconActive: 'assets/icons/ic_setting_active.png',
+      route: Routes.setting,
+      idNav: NavKeys.setting,
       navItem: NavItem(
-        navKey: NavKeys.user,
+        navKey: NavKeys.setting,
         getPage: GetPage(
-          name: Routes.user,
-          page: () => const UserView(),
-          binding: UserBinding(),
+          name: Routes.setting,
+          page: () => const SettingView(),
+          binding: SettingBinding(),
         ),
       ),
     ),

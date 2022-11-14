@@ -2,20 +2,6 @@
 
 A new Base GetX Flutter project.
 
-## Base UI
-- Flash Screen.
-- Logo App.
-- SignIn Screen.
-- SignUp Screen.
-- Otp Screen.
-- Profile Screen.
-
-## Base Function
-- Change theme.
-- Change language(vi-en).
-- Image Picker.
-- Date Picker.
-
 ## Structure root
 - ```android```: In this directory, all the project files for the android application. You can make changes, add necessary permissions and native Android code here.
 - ```ios```: In this directory, all the project files for the ios application. You can make changes, add necessary permissions and native IOS code here.
@@ -54,17 +40,9 @@ A new Base GetX Flutter project.
 
 ## Preview
 <div>
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/c9ba0b5e551d9f43c60c.jpg?alt=media&token=25b657c4-46d1-41c0-a733-c23c68d25b8b" width="270" height="600" />
-  <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/signin.jpg?alt=media&token=379ab3af-2bc7-49fb-9214-e2db9aed91d3" width="270" height="600" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/signup.jpg?alt=media&token=d9f0dfee-e163-4b4b-a810-e0a6c37391ed" width="270" height="600" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/1_splash_screen.png?alt=media&token=e4e16d74-39f3-4008-855e-269c499553fe" width="270" height="600" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/2_login_screen.png?alt=media&token=395e8ee2-5ad0-4dcb-b138-c07f19510480" width="270" height="600" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/3_sign_up_screen.png?alt=media&token=9a24ec70-8639-40cb-9720-35af262580ee" width="270" height="600" />
 </div>
-<div>
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/otp.jpg?alt=media&token=61758927-0803-452b-9274-72cc26a70fb6" width="270" height="600" />
-  <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/b655568301c0cb9e92d1.jpg?alt=media&token=54be98f0-fcfe-41f7-91b0-0480817838a2" width="270" height="600" />
-  <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/lang.jpg?alt=media&token=021f8e03-0eeb-473d-a7ce-8598e95a13fa" width="270" height="600" />
-</div>
-<div>
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/profile.jpg?alt=media&token=0878ab72-dd39-4947-977f-e2751049a3de" width="270" height="600" />
-  <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/date_picker.jpg?alt=media&token=69670cdf-a2e5-402c-9e11-667481c1531d" width="270" height="600" />
-  <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/img_picker.jpg?alt=media&token=b4dde82b-5df3-46b3-a3fb-c7510fa7ae89" width="270" height="600" />
-</div>
+
+### Home

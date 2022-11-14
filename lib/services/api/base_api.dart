@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/instance_manager.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';
-import '/const/app_configs.dart';
+
 import '/services/storage/storage_service.dart';
 import '/utils/app_utils.dart';
 
@@ -53,7 +54,7 @@ class BaseApi {
         path.contains('global-app-notification');
     if (!isAuth) {
       //Case: logged out.
-      if(_storage.sessionTimeout.isEmpty) return false;
+      if (_storage.sessionTimeout.isEmpty) return false;
       bool isValidateSessionTimeout = AppUtils.validateSessionTimeout();
       if (!isValidateSessionTimeout) {
         AppUtils.logout();

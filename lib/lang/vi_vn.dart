@@ -43,11 +43,10 @@ const Map<String, String> langVi = {
   'otp_resend': 'Gửi lại mã OTP',
 
   //BottomBar.
-  'navbar_notice': 'Thông Báo',
-  'navbar_report': 'Báo Cáo',
-  'navbar_home': 'Tổng Quan',
-  'navbar_unit': 'Đơn Vị',
-  'navbar_user': 'Cá Nhân',
+  'navbar_animation': 'Hiệu Ứng',
+  'navbar_utility': 'Tiện Ích',
+  'navbar_home': 'Trang Chủ',
+  'navbar_setting': 'Cài Đặt',
 
   //Message error.
   'msg_have_error': 'Đã có lỗi xảy ra, Vui lòng thử lại!',

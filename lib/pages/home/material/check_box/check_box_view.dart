@@ -46,9 +46,7 @@ class CheckBoxView extends GetView<CheckBoxController> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Theme(
-                    data: ThemeData(
-                      unselectedWidgetColor: Colors.transparent,
-                    ),
+                    data: ThemeData(unselectedWidgetColor: Colors.transparent),
                     child: Checkbox(
                       value: controller.cusCb1.value,
                       onChanged: controller.onChangedCusCb1,

@@ -43,12 +43,12 @@ A new Base GetX Flutter project.
 <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/1_splash_screen.png?alt=media&token=e4e16d74-39f3-4008-855e-269c499553fe" width="200" height="432" />
 <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/2_login_screen.png?alt=media&token=395e8ee2-5ad0-4dcb-b138-c07f19510480" width="200" height="432" />
 <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/3_sign_up_screen.png?alt=media&token=9a24ec70-8639-40cb-9720-35af262580ee" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/7_setting_screen.png?alt=media&token=af28556a-41d5-45ed-8cb4-5e2304545607" width="200" height="432" />
 </p>
 
-### Home
+## WalkThrough
 <p align="left" width="100%">
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/4_home_screen.png?alt=media&token=6b7fba7c-db67-48c8-ae91-a4d425654d29" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/5_utility_screen.png?alt=media&token=c5ddd741-47f2-4f7a-836d-6cde295df193" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/6_chart_screen.png?alt=media&token=344402fc-a84f-405b-9fff-83d78727de2d" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/7_setting_screen.png?alt=media&token=af28556a-41d5-45ed-8cb4-5e2304545607" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/8_wt1.png?alt=media&token=1666d98f-f7ba-408f-a782-0e779385c345" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/9_wt2.png?alt=media&token=2675f4e7-aa3d-466e-b8d6-4a83aebe3ad6" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/10_wt2.png?alt=media&token=a4314d77-1cf6-4b21-90c7-411c79b80aa7" width="200" height="432" />
 </p>

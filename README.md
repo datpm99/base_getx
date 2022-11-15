@@ -119,3 +119,18 @@ Container(
     ),
 ),
 ```
+
+## Chip
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/18_chip.png?alt=media&token=5f68f4ef-69b3-459f-b439-106520bed6c8" width="200" height="432"/>
+
+```dart
+FilterChip(
+  label: Text('Item $index'),
+  labelStyle: Styles.normalText(color: Colors.white),
+  shape: const StadiumBorder(side: BorderSide(width: 0.5)),
+  selected: (controller.filterChip.value == index),
+  selectedColor: Styles.primaryColor,
+  checkmarkColor: Colors.white,
+  onSelected: (val) => controller.onChangedFilterChip(index),
+)
+```

@@ -69,7 +69,7 @@ A new Base GetX Flutter project.
 
 ## CheckBox
 <img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/17_cb.png?alt=media&token=c6c18902-11f0-4a34-92ef-6c786fd85692" width="200" height="432"/>
-<?code-excerpt?>
+
 ```dart
 Container(
   width: 25,
@@ -92,20 +92,4 @@ Container(
         ),
     ),
 ),
-```
-
-
-```dart
-final List<BiometricType> availableBiometrics =
-    await auth.getAvailableBiometrics();
-
-if (availableBiometrics.isNotEmpty) {
-  // Some biometrics are enrolled.
-}
-
-if (availableBiometrics.contains(BiometricType.strong) ||
-    availableBiometrics.contains(BiometricType.face)) {
-  // Specific types of biometrics are available.
-  // Use checks like this with caution!
-}
 ```

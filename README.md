@@ -172,3 +172,39 @@ ColorFiltered(
 
 
 ```
+
+## Cupertino Context Menu
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/20_cupertino.png?alt=media&token=bca3fa05-d5ae-4b16-a87e-e2d8f153bce7" width="200" height="432"/>
+
+```dart
+CupertinoContextMenu(
+  child: Container(
+    height: 190,
+    width: Get.width,
+    margin: const EdgeInsets.all(16.0),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset('assets/images/avatar1.jpeg', fit: BoxFit.cover),
+    ),
+  ),
+  actions: <Widget>[
+    CupertinoContextMenuAction(
+      child: Text('Copy', style: Styles.normalText()),
+      isDefaultAction: true,
+      trailingIcon: Icons.content_copy,
+      onPressed: () => Get.back(),
+    ),
+    CupertinoContextMenuAction(
+      child: Text('Share', style: Styles.normalText()),
+      trailingIcon: Icons.share,
+      onPressed: () => Get.back(),
+    ),
+    CupertinoContextMenuAction(
+      child: Text('Delete', style: Styles.normalText()),
+      trailingIcon: Icons.delete,
+      onPressed: () => Get.back(),
+    ),
+  ],
+),
+
+```

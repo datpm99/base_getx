@@ -171,6 +171,11 @@ ColorFiltered(
 
 
 
+
+
+
+
+
 ```
 
 ## Cupertino Context Menu
@@ -242,5 +247,33 @@ Column(
     if (c.sliding == 2) mPage("Setting"),
   ],
 )
+
+```
+
+## ShowCase View
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/22_showCase.png?alt=media&token=120fe957-08e0-4ea5-b12d-f4dcf1aaa957" width="200" height="432"/>
+
+```dart
+Showcase(
+  key: controller.two,
+  title: 'Profile',
+  description: "Tap to see profile which contains user's name.",
+  showcaseBackgroundColor: Colors.pinkAccent,
+  textColor: Colors.white,
+  shapeBorder: const CircleBorder(),
+  child: Container(
+    padding: const EdgeInsets.all(5),
+    width: 45,
+    height: 45,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      color: Colors.pinkAccent,
+    ),
+    child: const Icon(Icons.star),
+  ),
+),
+
+
+
 
 ```

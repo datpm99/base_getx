@@ -159,4 +159,16 @@ ColorFiltered(
   ),
   child: Image.asset('assets/images/avatar1.jpeg'),
 ),
+
+ColorFiltered(
+  colorFilter: const ColorFilter.mode(
+    Colors.grey,
+    BlendMode.multiply,
+  ),
+  child: Image.asset('assets/images/avatar1.jpeg'),
+),
+
+
+
+
 ```

@@ -208,3 +208,39 @@ CupertinoContextMenu(
 ),
 
 ```
+
+## Cupertino Sliding Segmented Control
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/21_cupertino.png?alt=media&token=220578a0-e49f-4d9c-abae-616d8b4413ef" width="200" height="432"/>
+
+```dart
+Column(
+  children: [
+    Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(16.0),
+      child: CupertinoSlidingSegmentedControl(
+        children: {
+          0: Text(
+            'Home',
+            style: Styles.normalText(color: (c.sliding == 0) ? Colors.black : Colors.grey),
+          ).p(8),
+          1: Text(
+            'Booking',
+            style: Styles.normalText(color: (c.sliding == 1) ? Colors.black : Colors.grey),
+          ).p(8),
+          2: Text(
+            'Setting',
+            style: Styles.normalText(color: (c.sliding == 2) ? Colors.black : Colors.grey),
+          ).p(8),
+        },
+        groupValue: c.sliding,
+        onValueChanged: c.onValueChanged,
+      ),
+    ),
+    if (c.sliding == 0) mPage("Home"),
+    if (c.sliding == 1) mPage("Booking"),
+    if (c.sliding == 2) mPage("Setting"),
+  ],
+)
+
+```

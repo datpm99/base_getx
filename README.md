@@ -135,7 +135,11 @@ FilterChip(
 )
 
 ```
-<br/>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## ColorFiltered
 <img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/19_color_filtered.png?alt=media&token=03a03bd7-16bd-4118-b88d-c18bfcb93411" width="200" height="432"/>

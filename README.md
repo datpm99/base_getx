@@ -133,6 +133,9 @@ FilterChip(
   checkmarkColor: Colors.white,
   onSelected: (val) => controller.onChangedFilterChip(index),
 )
+
+
+
 ```
 
 ## ColorFiltered

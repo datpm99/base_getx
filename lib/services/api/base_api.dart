@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -14,35 +13,42 @@ import '/utils/app_utils.dart';
 
 //const domain= 'https://service.mdo.com.vn/api/';
 const domain = 'https://mdo-staging.bssd.vn/api/';
-//const domain = 'https://vpswebdev.bssd.vn/api/';
 final _storage = Get.find<StorageService>();
 
 class BaseApi {
   late Dio dio;
 
   interceptors() async {
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      if (validateSessionTimeout(options.path)) {
-        return handler.next(options);
-      }
-    }, onResponse: (response, handler) async {
-      if (!kReleaseMode) {
-        debugPrint('=================================================\n');
-        debugPrint('METHOD: ${response.requestOptions.method}');
-        debugPrint('REQUEST: ${response.requestOptions.uri}');
-        debugPrint('PARAMS: ${response.requestOptions.data}');
-        debugPrint('HEADER: ${response.requestOptions.headers}');
-        debugPrint('RESPONSE: ${jsonEncode(response.data)}');
-        debugPrint('=================================================\n');
-      }
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        if (validateSessionTimeout(options.path)) {
+          return handler.next(options);
+        }
+      },
+      onResponse: (response, handler) async {
+        if (!kReleaseMode) {
+          debugPrint('\n=================================================');
+          debugPrint('${response.requestOptions.method}: ${response.requestOptions.uri}');
+          debugPrint('PARAMS: ${response.requestOptions.data}');
+          // debugPrint('HEADER: ${response.requestOptions.headers}');
+          debugPrint('RESPONSE: ${response.data}');
+          debugPrint('=================================================\n');
+        }
 
-      return handler.next(response);
-    }, onError: (DioError e, handler) {
-      debugPrint('=================================================\n');
-      debugPrint('ERROR: ${e.message}');
-      debugPrint('=================================================\n');
-      return handler.next(e); //continue
-    }));
+        return handler.next(response);
+      },
+      onError: (DioError e, handler) {
+        debugPrint('\n=================================================');
+        debugPrint('ERROR: ${e.requestOptions.method}: ${e.requestOptions.uri}');
+        debugPrint('ERROR: PARAMS: ${e.requestOptions.data}');
+        debugPrint('ERROR: HEADER: ${e.requestOptions.headers}');
+        debugPrint('ERROR: ${e.message}');
+        debugPrint('ERROR: ${e.response.toString()}');
+        debugPrint('=================================================\n');
+
+        return handler.next(e); //continue
+      },
+    ));
   }
 
   validateSessionTimeout(String path) {
@@ -52,15 +58,15 @@ class BaseApi {
         path.contains('renew-verification-code') ||
         path.contains('loginByEmailAndCode') ||
         path.contains('global-app-notification');
-    if (!isAuth) {
-      //Case: logged out.
-      if (_storage.sessionTimeout.isEmpty) return false;
-      bool isValidateSessionTimeout = AppUtils.validateSessionTimeout();
-      if (!isValidateSessionTimeout) {
-        AppUtils.logout();
-        AppUtils.showError('msg_session_timeout'.tr);
-        return false;
-      }
+
+    if (isAuth) return true;
+
+    //Case: logout.
+    bool validTimeout = AppUtils.validateTokenTimeout();
+    if (!validTimeout) {
+      AppUtils.logout();
+      AppUtils.showError('msg_session_timeout'.tr);
+      return false;
     }
 
     return true;
@@ -80,6 +86,7 @@ class BaseApi {
   }
 
   void settingHeaderRequest(String token) {
+    dio.options.headers = {};
     if (token.isNotEmpty) {
       dio.options.headers['Authorization'] = 'Bearer $token';
     }
@@ -96,7 +103,6 @@ class BaseApi {
       {required String url, String token = '', var data}) async {
     try {
       settingHeaderRequest(token);
-
       if (data != null) return await dio.get(url, queryParameters: data);
       return await dio.get(url);
     } on DioError catch (e) {
@@ -120,10 +126,24 @@ class BaseApi {
     return null;
   }
 
-  Future<Response?> putRequest(String url, String token, String data) async {
+  Future<Response?> putRequest(
+      {required String url, String token = '', required String data}) async {
     try {
       settingHeaderRequest(token);
       return await dio.put(url, data: data);
+    } on DioError catch (e) {
+      if (e.response != null) return e.response;
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return null;
+  }
+
+  Future<Response?> deleteRequest(
+      {required String url, String token = '', var data}) async {
+    try {
+      settingHeaderRequest(token);
+      return await dio.delete(url, data: data);
     } on DioError catch (e) {
       if (e.response != null) return e.response;
     } catch (e) {

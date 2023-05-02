@@ -5,8 +5,8 @@ import 'storage/storage_service.dart';
 
 class AppServices {
   static Future<void> init() async {
-    Get.put(StorageService()).init();
-    Get.put(BaseApi()).init();
+    await Get.put(StorageService()).init();
+    await Get.put(BaseApi()).init();
     Get.put(LangController());
   }
 }

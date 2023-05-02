@@ -32,7 +32,7 @@ const Map<String, String> langVi = {
   'msg_update': 'Vui lòng cập nhật',
   'upload': 'Tải lên',
   'take_a_photo': 'Camera',
-  'enter_dob':'Nhập ngày sinh',
+  'enter_dob': 'Nhập ngày sinh',
 
   //OTP
   'otp_verification': 'Xác nhận mã OTP',

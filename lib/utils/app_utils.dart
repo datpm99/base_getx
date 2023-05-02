@@ -5,7 +5,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '/const/import_const.dart';
@@ -16,12 +15,10 @@ import '/widgets/loaders.dart';
 
 class AppUtils {
   static final lang = Get.find<LangController>();
-  static bool isShowLoading = false;
 
+  ///System.
   static Future<void> hideLoader() async {
-    if (!isShowLoading) return;
-    isShowLoading = false;
-    if (!Get.isSnackbarOpen) Get.back();
+    if (Get.isDialogOpen!) Get.back();
   }
 
   static Future<void> showLoader() async {
@@ -31,14 +28,13 @@ class AppUtils {
     );
   }
 
-  static void showError(String message) {
-    if (isShowLoading && Get.isDialogOpen!) {
-      hideLoader();
-    }
+  static void showError(String message, {bool isClose = true}) {
+    if (Get.isDialogOpen! && isClose) Get.back();
     Get.snackbar(
       'error'.tr,
       message,
       borderRadius: 0,
+      duration: const Duration(seconds: 3),
       colorText: Colors.white,
       backgroundColor: Styles.red1,
       animationDuration: 0.45.seconds,
@@ -67,10 +63,8 @@ class AppUtils {
     );
   }
 
-  static void showSuccess(String message) {
-    if (isShowLoading && Get.isDialogOpen!) {
-      hideLoader();
-    }
+  static void showSuccess(String message, {bool isClose = true}) {
+    if (Get.isDialogOpen! && isClose) Get.back();
     Get.snackbar(
       'success'.tr,
       message,
@@ -78,6 +72,7 @@ class AppUtils {
       colorText: Styles.black1,
       backgroundColor: Styles.green1,
       animationDuration: 0.45.seconds,
+      duration: const Duration(seconds: 3),
       forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
       reverseAnimationCurve: Curves.easeOutExpo,
       overlayColor: Colors.black26,
@@ -103,69 +98,41 @@ class AppUtils {
     );
   }
 
-  static bool validateSessionTimeout() {
+  static Future<void> closeNotify() async {
+    await 3.7.delay();
+    //Get.back();
+  }
+
+  static String getPlatForm() {
+    if (GetPlatform.isAndroid) return 'ANDROID';
+    if (GetPlatform.isIOS) return 'IOS';
+    return 'WEB';
+  }
+
+  ///Authentication.
+  static bool validateTokenTimeout() {
     final _storage = Get.find<StorageService>();
-    String sessionTimeout = _storage.sessionTimeout;
+    String tokenTimeout = _storage.tokenTimeout;
     DateTime now = DateTime.now();
-    if (sessionTimeout.isEmpty) return false;
+    if (tokenTimeout.isEmpty) return false;
 
     //Check current time <= timeout return false
-    DateTime? timeOut = DateTime.tryParse(sessionTimeout);
-    var diff = now.difference(timeOut!).inMinutes;
-    if (diff >= 0) {
-      _storage.sessionTimeout = '';
-      return false;
-    }
-
-    //Update sessionTimeout.
-    // _storage.sessionTimeout = now.add(const Duration(minutes: 30)).toString();
-    return true;
+    DateTime? timeOut = DateTime.tryParse(tokenTimeout);
+    return timeOut!.isAfter(now);
   }
 
   static void logout() async {
     final _storage = Get.find<StorageService>();
     String routesLogout = Routes.signIn;
 
-    _storage.sessionTimeout = '';
+    _storage.tokenTimeout = '';
     _storage.apiToken = '';
     _storage.userInfo = '';
     Get.offAllNamed(routesLogout);
   }
 
-  static Future<DateTime?> datePicker(BuildContext context,
-      {required DateTime initDate, required String errorFormatText}) async {
-    final DateTime? picked = await showDatePicker(
-      locale: lang.locale,
-      context: context,
-      initialDate: initDate,
-      firstDate: DateTime.now().subtract(const Duration(days: 365 * 10)),
-      lastDate: DateTime.now().add(const Duration(days: 365 * 10)),
-      errorFormatText: errorFormatText,
-    );
-    return picked;
-  }
-
-  ///Format date.
-  static String formatDate1(String val) {
-    if (val.isEmpty) return '';
-    final dateFormat = DateFormat("dd/MM/yyyy HH:mm:ss");
-    final dateTime = dateFormat.parse(val);
-    return dateFormat.format(dateTime);
-  }
-
-  static String formatDate2(DateTime date) {
-    return DateFormat("dd/MM/yyyy").format(date);
-  }
-
-  static String formatDate3(String val) {
-    if (val.isEmpty) return '';
-    final dateFormat = DateFormat("dd/MM/yyyy HH:mm:ss");
-    final date = dateFormat.parse(val);
-    return DateFormat("HH:mm:ss dd/MM/yyyy").format(date);
-  }
-
-  ///Write file.
-  static Future<File> writeFileImg(var data) async {
+  ///File.
+  static Future<File> writeFile(var data) async {
     Directory tempDir = await getTemporaryDirectory();
     var filePath = tempDir.path + '/file_01.png';
     return File(filePath).writeAsBytes(data);
@@ -186,47 +153,50 @@ class AppUtils {
     return filePdf.path;
   }
 
+  static String getFileSize(int fileSize, {int round = 0}) {
+    if (fileSize <= 0) return "0B";
+    const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    var i = (log(fileSize) / log(1024)).floor();
+    return ((fileSize / pow(1024, i)).toStringAsFixed(round)) + suffixes[i];
+  }
+
+  ///Image.
   static bool checkFormatImage(String path) {
-    String image = path.split('.').last;
+    String image = path.split('.').last.toLowerCase();
     return (image == 'png' || image == 'jpg');
   }
 
-  static Future<void> closeNotify() async {
-    await 2.5.delay();
-    Get.back();
-  }
-
+  ///Utils.
   static String getFirstCharacter(String name) {
     if (name.isEmpty) return '';
+    name = name.trim();
     String lastWord = name.substring(name.lastIndexOf(" ") + 1);
     return lastWord[0].toUpperCase();
   }
 
-  static String getPlatForm() {
-    if (GetPlatform.isAndroid) return 'ANDROID';
-    if (GetPlatform.isIOS) return 'IOS';
-    return 'WEB';
+  static String formatCountDoc(int val) {
+    if (val < 100) return '$val';
+    return '99+';
+  }
+
+  static String shortNameFile(String text) {
+    if (text.isEmpty) return '';
+    if (!text.contains('-')) return text;
+    if (text.length <= 15) return text;
+    return text.substring(0, 15) + ' ...';
   }
 
   ///Error api.
-  static void showErrorApi(var result, String nameFunc) {
-    if (result != null && result.error.isNotEmpty) {
-      AppUtils.showError(result.error);
-      return;
-    }
-
-    debugPrint('error ---> $nameFunc');
-    AppUtils.showError('msg_have_error'.tr);
-  }
-
   static void showMessApi(var result, String nameFunc) {
     if (result != null && result.message.isNotEmpty) {
       AppUtils.showError(result.message);
       return;
     }
 
-    debugPrint('error ---> $nameFunc');
-    AppUtils.showError('msg_have_error'.tr);
+    if (result == null) {
+      debugPrint('error ---> $nameFunc');
+      AppUtils.showError('msg_have_error'.tr);
+    }
   }
 
   ///Color selectBox.
@@ -238,13 +208,6 @@ class AppUtils {
   static Color getColorTextSelectedItem(int id, var item) {
     if (item.id == id) return Styles.blue7;
     return Styles.black2;
-  }
-
-  static String getFileSize(int fileSize, {int round = 0}) {
-    if (fileSize <= 0) return "0B";
-    const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-    var i = (log(fileSize) / log(1024)).floor();
-    return ((fileSize / pow(1024, i)).toStringAsFixed(round)) + suffixes[i];
   }
 
   /// Format by 0979560***.

@@ -31,8 +31,8 @@ class StorageService extends GetxService implements BaseService {
   String get authModel => _box.read(_Keys.authModel) ?? '';
   set authModel(String value) => _write(_Keys.authModel, value);
 
-  String get sessionTimeout => _box.read(_Keys.sessionTimeout) ?? '';
-  set sessionTimeout(String value) => _write(_Keys.sessionTimeout, value);
+  String get tokenTimeout => _box.read(_Keys.tokenTimeout) ?? '';
+  set tokenTimeout(String value) => _write(_Keys.tokenTimeout, value);
 
   bool get useFingerprint => _box.read(_Keys.useFingerprint) ?? false;
   set useFingerprint(bool value) => _write(_Keys.useFingerprint, value);
@@ -59,7 +59,7 @@ class StorageService extends GetxService implements BaseService {
       _box.write(_Keys.firstLaunch, false);
       language = 'vi_VN';
     }
-    deviceName = await AppNative.deviceName();
+    deviceName = await AppNative.deviceInfo();
     deviceID = deviceName.split('|').last;
     deviceID = deviceID.isEmpty ? deviceID : 'null';
   }
@@ -82,7 +82,7 @@ abstract class _Keys {
   static const String apiToken = 'api_token';
   static const String userInfo = 'user_info';
   static const String authModel = 'auth_model';
-  static const String sessionTimeout = 'session_timeout';
+  static const String tokenTimeout = 'tokenTimeout';
   static const String useFingerprint = 'use_finger_print';
   static const String loginDeepLink = 'login_deeplink';
 

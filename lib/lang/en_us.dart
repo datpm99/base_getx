@@ -13,13 +13,13 @@ const Map<String, String> langEn = {
   'error': 'Error',
   'success': 'Success',
   'notification': 'Notification',
-  'phone': 'Phone',
+  'phone': 'Phone number',
   'personal_info': 'Personal information',
   'dark_mode': 'Dark mode',
   'light_mode': 'Light mode',
   'or': 'Or',
   'you_do_not_have_an_account': "You don't have an account?",
-  'do_you_already_have_an_account': 'Do you already have an account?',
+  'do_you_already_have_an_account': 'You already have an account?',
   'full_name': 'Full name',
   'confirm': 'Confirm',
   'update': 'Update',
@@ -32,7 +32,7 @@ const Map<String, String> langEn = {
   'msg_update': 'Please update',
   'upload': 'Upload',
   'take_a_photo': 'Camera',
-  'enter_dob':'Enter Date of Birth',
+  'enter_dob': 'Enter Date of Birth',
 
   //OTP
   'otp_verification': 'Confirm OTP',
@@ -54,13 +54,13 @@ const Map<String, String> langEn = {
   'msg_empty_reason': 'The reason is required',
   'msg_submission_date_invalid': 'Date submitted is wrong format',
   'msg_error_date_between': 'From date - To date must not exceed 365 days',
-  'msg_error_date1': 'Thời gian từ ngày không được lớn hơn đến ngày',
+  'msg_error_date1': 'From date cannot be greater than to date',
   'msg_error_date_format': 'Date wrong format',
 
   //Message notify.
-  'msg_required_code': 'Please enter the verification code',
   'msg_verification_code':
       'Please enter the verification code sent to your account',
+  'msg_required_code': 'Please enter the verification code',
   'msg_verification_email': 'Please enter your registered email address',
   'msg_empty': '@label is required',
   'msg_invalid': '@label is invalid',
@@ -72,4 +72,6 @@ const Map<String, String> langEn = {
   'msg_required': 'Please enter information',
   'msg_error_reason': 'You have not entered a reason',
   'msg_close_app': 'Do you want to quit?',
+  'msg_pass_rule1':
+      'The password must be between 8 - 50 characters, contain uppercase, lowercase, numeric, and special characters including: *@#\$%^&+=',
 };

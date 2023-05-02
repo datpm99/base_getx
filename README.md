@@ -1,27 +1,42 @@
 # Base_GetX
+This is a sample project based on GetX.
 
-A new Base GetX Flutter project.
+## Feature
+* Change theme.
+* Internationalization.
+* Handle call API (base on Dio).
 
-## Structure root
-- ```android```: In this directory, all the project files for the android application. You can make changes, add necessary permissions and native Android code here.
-- ```ios```: In this directory, all the project files for the ios application. You can make changes, add necessary permissions and native IOS code here.
-- ```assets```: This folder contains all the files of the application. Ex: .png, .pdf v.v.
-- ```build```: This folder contains all the compiled outputs like app bundles, apk files and other related files and folders.
-- ```lib```: The directory containing the main source code of the app.
-- ```pubspec.yaml, pubspec.lock```: These files contain all required package names, their versions, links to assets, dependencies, application name, application version, application dependencies, v.v.
+## Requirement
+* Flutter Version: 2.10.5.
+* Dart SDK: 2.16.2.
+* IDE: Android Studio or Visual Code.
 
-## Structure project
-- ```const```
-    - ```theme```: Configs theme and styles.
-    - ```app_configs```: Variable configs app.
-    - ```import_const```: Export heavily used libraries.
-    - ```status_code```: Status code when call api.
-- ```lang```: The directory contains language files.
-    - ```en_us```: File English.
-    - ```vi_vn```: File Vietnamese.
-    - ```lang_controller```: Handle change language.
-    - ```translation_service```: List the languages used.
-- ```models```: Model common.
+#### Knowledge
+* Dart programming language.
+* GetX, get_storage.
+* Dio, interceptors.
+
+## Getting Started
+* Run "Pub get" in Terminal or in file pubspec.yaml.
+
+```shell script
+cd <mdo-mobile>
+flutter pub get
+```
+
+## Project Structure
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/78.png?alt=media&token=9fe34e5e-2a94-4acc-b751-9f67185b16f3"/>
+
+- ```const```: Includes app configuration such as Theme, Role,... .<br>
+- ```lang```: Includes file languages.<br>
+- ```models```: Includes model common.<br>
+- ```pages```: Includes screen common such as Login, changePassword,... .<br>
+- ```routes```: Routes management.<br>
+- ```services```: Includes services such as API, Firebase, Storage.<br>
+- ```utils```: Includes utilities such as Validation, Formatter,... .<br>
+- ```widgets```: Includes widgets common.<br>
+
+## Page Structure
 - ```pages```: The directory contains screen of project.
     - Subpage structure
         - ```const```: Config use only in page.
@@ -31,12 +46,320 @@ A new Base GetX Flutter project.
         - ```page_controller.dart```: File handle logic page.
         - ```page_view.dart```: File view of page.
         - ```page_bindings.dart```: File binding of page.
-- ```routes```: Init router, navigator page.
-- ```services```: Init services api, firebase, setting...
-- ```utils```: File common for app.
-- ```widgets```: Widget common for page.
-- ```my_app.dart```: Config app.
-- ```main.dart```: File start application.
+
+## Usage
+### Internationalization
+This project supports two languages: English and Vietnamese.
+* First, Add a language key.
+
+`lib/lang/vi_vn.dart`
+
+```arb
+{
+  'login': 'Đăng nhập',
+}
+```
+
+`lib/lang/en_us.dart`
+
+```arb
+{
+  'login': 'Login',
+}
+```
+
+* Second, Use a language key.
+
+```dart
+Text('login'.tr),
+```
+
+* Third, Change language.
+
+```dart
+final lang = Get.find<LangController>();
+lang.changeLang('vi', 'VN');
+lang.changeLang('en', 'US');
+```
+
+### Theme
+Directory `lib/const/theme`. Includes configuration about Color, TextStyle, BoxShadow, BoxDecoration.
+* First, Color.
+
+```dart
+// Add a color.
+// Directory lib/const/theme/styles.
+static const white19 = Color(0xffF5F8FB);
+
+// Use a color.
+Text('login'.tr, style: Styles.normalText(color: Styles.white19)),
+```
+
+* Second, TextStyle.
+  TextStyle defined in path `lib/const/theme/styles.dart` is not corrected.
+
+```dart
+// Use a TextStyle.
+Text('login'.tr, style: Styles.normalText()),
+```
+
+* Third, BoxShadow.
+
+```dart
+// Use a BoxShadow.
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    boxShadow: Styles.boxShadow1(),
+  ),
+  child: Image.asset('assets/icons/ic_advance_ticket.png', width: 24),
+),
+```
+
+* Fourth, BoxDecoration.
+
+```dart
+// Use a BoxDecoration.
+Container(
+  decoration: Styles.boxDecoration1(),
+  child: Image.asset('assets/icons/ic_advance_ticket.png', width: 24),
+),
+```
+
+### Data state
+This project uses GetX for state management. In Controller layer, use GetxController.
+
+There are two ways to update the status. Use variables `Rx` or Function `update();`
+
+* First way: Use variables `Rx`
+
+```dart
+// Class controller.
+import 'package:get/get.dart';
+
+class CounterController extends GetxController {
+  Rx<int> count = 0.obs;
+
+  void increment() {
+    count.value++;
+  }
+}
+```
+
+```dart
+// Class view.
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'counter_controller.dart';
+
+class CounterView extends GetView<CounterController> {
+  const CounterView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Obx(() {
+        return Text('${controller.count.value}');
+      }),
+    );
+  }
+}
+```
+
+* Second way: Use Function `update();`
+  In case there are many places, it is necessary to update the status using ID.
+
+```dart
+// Class controller.
+import 'package:get/get.dart';
+
+class CounterController extends GetxController {
+  int count = 0;
+
+  void increment() {
+    count++;
+    update([1]); //Only update widget with id equal to 1.
+  }
+}
+```
+
+```dart
+// Class view.
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'counter_controller.dart';
+
+class CounterView extends GetView<CounterController> {
+  const CounterView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GetBuilder<CounterController>(
+        id: 1,
+        builder: (c) {
+          return Text('${c.count}');
+        },
+      ),
+    );
+  }
+}
+```
+
+Read more [Getx state management](https://pub.dev/packages/get#state-management)
+
+### Route
+This project uses GetX for route management. Defined in path `lib/routes/routes.dart`
+
+```dart
+import 'package:get/get.dart';
+import '/pages/page.dart';
+
+abstract class Routes {
+  static const login = '/login';
+  static const loginOutSide = '/login_outside';
+  static const changePassword = '/change_password';
+}
+
+abstract class AppPages {
+  static String initial = Routes.login;
+
+  static final routes = [
+    GetPage(
+      name: Routes.login,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
+    ),
+  ];
+}
+```
+#### Navigation with named routes
+
+Navigate to a new screen with name.
+```dart
+Get.toNamed(Routes.login);
+```
+
+To navigate and remove the previous screen from the tree.
+```dart
+Get.offNamed(Routes.login);
+```
+
+To navigate and remove all previous screens from the tree.
+```dart
+Get.offAllNamed(Routes.login);
+```
+
+To close anything you would normally close with Navigator.pop(context).
+```dart
+Get.back();
+```
+
+On other screen, send a data for previous route:
+```dart
+Get.back(result: 'success');
+```
+
+#### Send data to named Routes
+
+Just send what you want for arguments. Get accepts anything here, whether it is a String, a Map, a List, or even a class instance.
+```dart
+Get.toNamed(Routes.login, arguments: 'Get is the best');
+```
+
+on your class or controller:
+
+```dart
+print(Get.arguments);
+//print out: Get is the best
+```
+
+Read more [Getx route management](https://github.com/jonataslaw/getx/blob/master/documentation/en_US/route_management.md)
+
+### Utilities
+Directory `lib/utils`. Includes utilities such as: Validation, Formatter, Downloader, Uploader.
+
+#### AppNative
+Including device operations such as: deviceInfo, makePhoneCall, sendSms, sendEmail,... .
+
+How to use.
+
+```dart
+AppNative.sendSms('This is a new message'),
+```
+
+#### AppValidation
+Includes input authentication methods such as: email, password,... .
+
+How to use.
+
+```dart
+AppValidation.email('datpm@bssd.com'),
+```
+
+#### DateFormatter
+Includes methods `datePicker` and `dateFormat`.
+
+How to use.
+
+```dart
+DateFormatter.formatDate5('20/09/1999'),
+```
+
+```dart
+DateTime? datePicker = await DateFormatter.datePicker(
+  context,
+  initDate: initDate,
+  errorFormatText: 'msg_error_format_date'.tr,
+);
+```
+
+#### TimeFormatter
+Includes methods `timePicker` and `timeFormat`.
+
+How to use.
+
+```dart
+TimeOfDay time = TimeOfDay.now();
+var result = await TimeFormatter.timePicker(context, time);
+```
+
+#### SingletonRole
+Check user permissions. The user will not be able to use the functions without permission.
+
+How to use.
+
+```dart
+// Return boolean.
+SingletonRole().taskCreate()
+```
+
+#### AppUtils
+Definition of utility methods is used a lot.
+
+How to use.
+
+```dart
+// Show dialog loading.
+AppUtils.showLoader();
+
+// Hide dialog loading.
+AppUtils.hideLoader();
+
+// Show message error with snack bar.
+AppUtils.showError('This is an error message');
+
+// Show message success with snack bar.
+AppUtils.showSuccess('This is an success message');
+
+// Get platForm.
+AppUtils.getPlatForm();
+
+// Logout.
+AppUtils.logout();
+```
+
+### Handle call API (base on Dio)
 
 ## Preview
 <p align="left" width="100%">

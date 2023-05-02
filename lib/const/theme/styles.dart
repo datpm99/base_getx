@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'app_theme.dart';
+import 'themes.dart';
 
 class Styles {
   static ThemeData get light => lightTheme;
 
   static ThemeData get dark => darkTheme;
 
-  static changeTheme() {
+  static void changeTheme() {
     Get.changeThemeMode(Get.isDarkMode ? ThemeMode.light : ThemeMode.dark);
   }
 
@@ -121,87 +122,101 @@ class Styles {
   static const pink4 = Color(0xffFCD8DC);
 
   ///TextStyles.
+  static TextStyle getTextStyle(color, double font, fontWeight) => TextStyle(
+        color: color,
+        fontSize: font.sp,
+        fontWeight: fontWeight,
+        fontFamily: GoogleFonts.mulish().fontFamily,
+      );
+
   //Small.
   static TextStyle smallText({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp);
+      getTextStyle(color, 12, FontWeight.normal);
 
   static TextStyle smallTextW500({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp, fontWeight: FontWeight.w500);
+      getTextStyle(color, 12, FontWeight.w500);
 
   static TextStyle smallTextW600({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp, fontWeight: FontWeight.w600);
+      getTextStyle(color, 12, FontWeight.w600);
 
   static TextStyle smallTextW700({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp, fontWeight: FontWeight.w700);
+      getTextStyle(color, 12, FontWeight.w700);
 
   static TextStyle smallTextW800({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp, fontWeight: FontWeight.w800);
+      getTextStyle(color, 12, FontWeight.w800);
 
   static TextStyle smallTextW900({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 12.sp, fontWeight: FontWeight.w900);
+      getTextStyle(color, 12, FontWeight.w900);
 
   //Normal.
   static TextStyle normalText({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp);
+      getTextStyle(color, size, FontWeight.normal);
 
   static TextStyle normalTextW500({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp, fontWeight: FontWeight.w500);
+      getTextStyle(color, size, FontWeight.w500);
 
   static TextStyle normalTextW600({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp, fontWeight: FontWeight.w600);
+      getTextStyle(color, size, FontWeight.w600);
 
   static TextStyle normalTextW700({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp, fontWeight: FontWeight.w700);
+      getTextStyle(color, size, FontWeight.w700);
 
   static TextStyle normalTextW800({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp, fontWeight: FontWeight.w800);
+      getTextStyle(color, size, FontWeight.w800);
 
   static TextStyle normalTextW900({Color color = black2, double size = 14}) =>
-      TextStyle(color: color, fontSize: size.sp, fontWeight: FontWeight.w900);
+      getTextStyle(color, size, FontWeight.w900);
 
   //Medium.
   static TextStyle mediumText({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp);
+      getTextStyle(color, 16, FontWeight.normal);
 
   static TextStyle mediumTextW500({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp, fontWeight: FontWeight.w500);
+      getTextStyle(color, 16, FontWeight.w500);
 
   static TextStyle mediumTextW600({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp, fontWeight: FontWeight.w600);
+      getTextStyle(color, 16, FontWeight.w600);
 
   static TextStyle mediumTextW700({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp, fontWeight: FontWeight.w700);
+      getTextStyle(color, 16, FontWeight.w700);
 
   static TextStyle mediumTextW800({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp, fontWeight: FontWeight.w800);
+      getTextStyle(color, 16, FontWeight.w800);
 
   static TextStyle mediumTextW900({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 16.sp, fontWeight: FontWeight.w900);
+      getTextStyle(color, 16, FontWeight.w900);
 
   //Big.
   static TextStyle bigText({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp);
+      getTextStyle(color, 18, FontWeight.normal);
 
   static TextStyle bigTextW500({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp, fontWeight: FontWeight.w500);
+      getTextStyle(color, 18, FontWeight.w500);
 
   static TextStyle bigTextW600({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp, fontWeight: FontWeight.w600);
+      getTextStyle(color, 18, FontWeight.w600);
 
   static TextStyle bigTextW700({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp, fontWeight: FontWeight.w700);
+      getTextStyle(color, 18, FontWeight.w700);
 
   static TextStyle bigTextW800({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp, fontWeight: FontWeight.w800);
+      getTextStyle(color, 18, FontWeight.w800);
 
   static TextStyle bigTextW900({Color color = black2}) =>
-      TextStyle(color: color, fontSize: 18.sp, fontWeight: FontWeight.w900);
+      getTextStyle(color, 18, FontWeight.w900);
 
-  static TextStyle textUnderline({Color color = black2, double size = 14}) =>
+  static TextStyle textUnderline({
+    Color color = black2,
+    double size = 14,
+    FontWeight fWeight = FontWeight.w500,
+  }) =>
       TextStyle(
-          color: color,
-          fontSize: size.sp,
-          decoration: TextDecoration.underline);
+        color: color,
+        fontSize: size.sp,
+        fontWeight: fWeight,
+        decoration: TextDecoration.underline,
+        fontFamily: GoogleFonts.mulish().fontFamily,
+      );
 
   ///Border TextField.
   static OutlineInputBorder inputBorder30({Color color = grey13}) {

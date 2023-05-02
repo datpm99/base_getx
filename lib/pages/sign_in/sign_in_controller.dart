@@ -37,14 +37,14 @@ class SignInController extends GetxController {
     var result = await _service.login(request.toJson());
     AppUtils.hideLoader();
 
-    if (result != null && result.errorCode == StatusCode.ok) {
+    if (result != null && result.errorCode == StatusCode.success) {
       if (result.data == null) return;
 
       //Set token.
       DateTime sessionTimeout =
           DateTime.now().add(Duration(seconds: result.data!.tokenTimeout));
       _storage.apiToken = result.data!.token;
-      _storage.sessionTimeout = sessionTimeout.toString();
+      _storage.tokenTimeout = sessionTimeout.toString();
 
       Get.offAllNamed(Routes.root);
       return;

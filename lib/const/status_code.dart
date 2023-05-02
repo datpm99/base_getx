@@ -1,5 +1,5 @@
 class StatusCode {
-  static int ok = 200;
+  static int success = 200;
   static int created = 201;
   static int accepted = 202;
   static int badRequest = 400;

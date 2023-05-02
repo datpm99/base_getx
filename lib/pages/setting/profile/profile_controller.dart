@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import '/utils/date_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -43,11 +44,11 @@ class ProfileController extends GetxController {
   RxBool isSelectDate = false.obs;
 
   selectDate(BuildContext context) async {
-    final DateTime? picked = await AppUtils.datePicker(context,
+    final DateTime? picked = await DateFormatter.datePicker(context,
         initDate: selectedDate, errorFormatText: '');
     if (picked != null && picked != selectedDate) {
       selectedDate = picked;
-      strDob.value = AppUtils.formatDate2(selectedDate);
+      strDob.value = DateFormatter.formatDate2(selectedDate);
       isSelectDate.value = true;
     }
   }
@@ -69,10 +70,10 @@ class ProfileController extends GetxController {
     final image = await _picker.pickImage(source: imageSource);
     if (image != null) {
       file = File(image.path);
-      if (file.lengthSync() > AppConfigs.fileSize) {
+      if (file.lengthSync() > AppConfigs.fileSize15MB) {
         isPicker.value = false;
         AppUtils.showError(
-          'msg_error_size_file'.trParams({'num': AppConfigs.fileSizeName}),
+          'msg_error_size_file'.trParams({'num': AppConfigs.sizeName15MB}),
         );
       } else {
         isPicker.value = true;

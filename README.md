@@ -361,7 +361,172 @@ AppUtils.logout();
 
 ### Handle call API (base on Dio)
 Here is a sequence diagram of action get data from API.
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/Bie%CC%82%CC%89u%20%C4%91o%CC%82%CC%80%20kho%CC%82ng%20co%CC%81%20tie%CC%82u%20%C4%91e%CC%82%CC%80.jpeg?alt=media&token=343d4144-8f8d-4e7a-b319-8aa03202d753"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/dio.png?alt=media&token=56785e54-af06-461a-b72b-d033f9543803"/>
+
+As usual, we can change domain, setting when before api in `lib/services/api/base_api.dart`.
+```dart
+// const domainPublic = 'https://service.mdo.com.vn/api/';
+const domainTest = 'https://service-mass.mdo.com.vn/api/';
+// const domainTest = 'https://test.mdo.com.vn/api/';
+// const domainTest = 'https://staging.mdo.com.vn/api/';
+```
+
+How to use.
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/dio1.png?alt=media&token=00da69ed-75ea-4db5-beaa-098c945ff8cd" />
+
+* First, Create a model map data response from api ([quicktype.io](https://app.quicktype.io/)).
+```dart
+class LoginModel {
+  LoginModel({
+    required this.status,
+    required this.message,
+    this.data,
+  });
+
+  int status;
+  String message;
+  Data? data;
+
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
+    status: json["status"] ?? 0,
+    message: json.containsKey("message") ? json["message"] : '',
+    data: (json["data"] == null) ? null : Data.fromJson(json["data"]),
+  );
+}
+
+class Data {
+  Data({
+    required this.token,
+    required this.tokenTimeout,
+    required this.captcha,
+    required this.refreshToken,
+    required this.refreshTokenExpiredAt,
+  });
+
+  String token;
+  int tokenTimeout;
+  String captcha;
+  String refreshToken;
+  int refreshTokenExpiredAt;
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    token: json.containsKey("token") ? json["token"] : '',
+    tokenTimeout: json["tokenTimeout"] ?? 0,
+    captcha: json.containsKey("captcha") ? json["captcha"] : '',
+    refreshToken: json["refreshToken"] ?? '',
+    refreshTokenExpiredAt: json["refreshTokenExpiredAt"] ?? 0,
+  );
+}
+```
+
+* Second, Create function call api login in `login_service.dart`.
+```dart
+Future<LoginModel?> login(String request) async {
+  try {
+    var response = await _service.postRequest(
+      url: CommonApi.login,
+      data: request,
+    );
+    if (response != null) {
+      return LoginModel.fromJson(response.data);
+    }
+  } catch (e) {
+    debugPrint(e.toString());
+  }
+  return null;
+}
+```
+
+* Third, Create function handle logic with UI in `login_controller.dart`.
+```dart
+Future<void> login() async {
+  AppUtils.showLoader();
+  LoginRequest request = LoginRequest(
+    username: _fields.email.value.trim(),
+    password: _fields.password.value,
+    guid: storage.deviceID,
+    captcha: _fields.captcha.value.trim(),
+  );
+  var result = await loginService.login(request.toJson());
+  await AppUtils.hideLoader();
+
+  if (result != null && result.status == StatusCodes.ok) {
+    Get.offAllNamed(Routes.root);
+  } else if (result != null && result.message.isNotEmpty) {
+    AppUtils.showError(result.message);
+  } else {
+    debugPrint('error ---> _login');
+    AppUtils.showError('msg_have_error'.tr);
+  }
+}
+```
+
+* Note, with api need param data create model request `login_request.dart`.
+```dart
+class LoginRequest {
+  LoginRequest({
+    required this.username,
+    required this.password,
+    required this.guid,
+    required this.captcha,
+  });
+
+  String username;
+  String password;
+  String guid;
+  String captcha;
+
+  Map<String, dynamic> toMap() => {
+    "username": username,
+    "password": password,
+    "guid": guid,
+    "captcha": captcha,
+  };
+
+  String toJson() => json.encode(toMap());
+}
+```
+
+### Handle different screens
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/sizes-phone-tablet.png?alt=media&token=d9a1bf8d-c7fe-4688-b562-6ac1578bb28d"/>
+
+* Add `with AdaptivePage` into Widget.
+```dart
+class LoginView extends StatelessWidget with AdaptivePage{
+  const LoginView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: adaptiveBody(context),
+    );
+  }
+
+  @override
+  Widget mobileLandscapeBody(BuildContext context, Size size) {
+    // TODO: implement mobileLandscapeBody
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget mobilePortraitBody(BuildContext context, Size size) {
+    // TODO: implement mobilePortraitBody
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget tabletLandscapeBody(BuildContext context, Size size) {
+    // TODO: implement tabletLandscapeBody
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget tabletPortraitBody(BuildContext context, Size size) {
+    // TODO: implement tabletPortraitBody
+    throw UnimplementedError();
+  }
+}
+```
 
 ## Preview
 <p align="left" width="100%">

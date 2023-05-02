@@ -20,7 +20,7 @@ This is a sample project based on GetX.
 * Run "Pub get" in Terminal or in file pubspec.yaml.
 
 ```shell script
-cd <mdo-mobile>
+cd <base-getx>
 flutter pub get
 ```
 
@@ -360,6 +360,8 @@ AppUtils.logout();
 ```
 
 ### Handle call API (base on Dio)
+Here is a sequence diagram of action get data from API.
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/Bie%CC%82%CC%89u%20%C4%91o%CC%82%CC%80%20kho%CC%82ng%20co%CC%81%20tie%CC%82u%20%C4%91e%CC%82%CC%80.jpeg?alt=media&token=343d4144-8f8d-4e7a-b319-8aa03202d753"/>
 
 ## Preview
 <p align="left" width="100%">

@@ -64,3 +64,5 @@ export 'utility/tinder_card/tinder_card_controller.dart';
 export 'utility/tinder_card/tinder_card_view.dart';
 export 'utility/utility_binding.dart';
 export 'utility/utility_view.dart';
+export 'unit_test/unit_test_view.dart';
+export 'unit_test/unit_test_binding.dart';

@@ -31,6 +31,12 @@ class UtilityController extends GetxController {
       color: Styles.pink2,
       route: Routes.showCase,
     ),
+    ObjModel(
+      title: 'Unit Test',
+      subTitle: 'Unit Test Screens',
+      color: Styles.primaryColor,
+      route: Routes.unitTest,
+    ),
   ];
 
   void onNavigator(String route) {

@@ -45,6 +45,7 @@ class Routes {
   static const confetti = '/confetti';
   static const showCase = '/showCase';
   static const tinderCard = '/tinderCard';
+  static const unitTest = '/unitTest';
 }
 
 class AppPages {
@@ -208,6 +209,11 @@ class AppPages {
       name: Routes.tinderCard,
       page: () => const TinderCardView(),
       binding: BindingsBuilder.put(() => TinderCardController()),
+    ),
+    GetPage(
+      name: Routes.unitTest,
+      page: () => const UnitTestView(),
+      binding: UnitTestBinding(),
     ),
   ];
 }

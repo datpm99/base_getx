@@ -12,7 +12,8 @@ import '/services/storage/storage_service.dart';
 import '/utils/app_utils.dart';
 
 //const domain= 'https://service.mdo.com.vn/api/';
-const domain = 'https://mdo-staging.bssd.vn/api/';
+// const domain = 'https://mdo-staging.bssd.vn/api/';
+const domain = 'https://jsonplaceholder.typicode.com/';
 final _storage = Get.find<StorageService>();
 
 class BaseApi {
@@ -21,9 +22,10 @@ class BaseApi {
   interceptors() async {
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        if (validateSessionTimeout(options.path)) {
-          return handler.next(options);
-        }
+        // if (validateSessionTimeout(options.path)) {
+        //   return handler.next(options);
+        // }
+        return handler.next(options);
       },
       onResponse: (response, handler) async {
         if (!kReleaseMode) {
@@ -90,13 +92,13 @@ class BaseApi {
     if (token.isNotEmpty) {
       dio.options.headers['Authorization'] = 'Bearer $token';
     }
-    dio.options.headers['domain'] = _storage.companyCode;
+    //dio.options.headers['domain'] = _storage.companyCode;
     dio.options.responseType = ResponseType.json;
     dio.options.contentType = 'application/json';
 
     //Check lang code.
-    String localeCode = _storage.language.split('_')[0];
-    dio.options.headers['Accept-Language'] = localeCode;
+    // String localeCode = _storage.language.split('_')[0];
+    // dio.options.headers['Accept-Language'] = localeCode;
   }
 
   Future<Response?> getRequest(

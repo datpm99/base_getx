@@ -12,4 +12,8 @@ class CommonApi {
   static String saveFcmToken = 'core/notification/private/save-fcm-token';
   static String getCusSupport = 'core/system-parameter/private/find-system-parameters-over-systems/CSKH';
   static String globalAppNotification = 'notification/public/global-app-notification';
+
+  //Get data demo.
+  static String getComment = 'comments?postId=1';
+  static String postComment = 'posts';
 }

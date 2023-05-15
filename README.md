@@ -126,6 +126,35 @@ Container(
 ),
 ```
 
+### Logger
+Small, easy to use and extensible logger which prints beautiful logs.
+
+<img src="https://raw.githubusercontent.com/Bungeefan/logger/master/art/screenshot.png"/>
+
+```dart
+///Logger.
+static void showLogInfo(String msg) {
+  loggerNoStack.i(msg);
+}
+
+static void showLogWarning(String msg) {
+  loggerNoStack.w(msg);
+}
+
+static void showLogError(String msg) {
+  logger.e(msg);
+}
+
+///Usage.
+AppUtils.showLogInfo('This is info log');
+AppUtils.showLogWarning('This is warning log');
+AppUtils.showLogError('This is error log');
+
+///Note.
+//loggerNoStack : number of method calls to be displayed equal 0.
+//logger: number of method calls to be displayed equal 2.
+```
+
 ### Data state
 This project uses GetX for state management. In Controller layer, use GetxController.
 

@@ -52,6 +52,7 @@ class BaseApi {
         path.contains('forget-password') ||
         path.contains('renew-verification-code') ||
         path.contains('loginByEmailAndCode') ||
+        path.contains('post') ||
         path.contains('global-app-notification');
 
     if (isAuth) return true;

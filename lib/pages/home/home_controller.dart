@@ -22,12 +22,6 @@ class HomeController extends GetxController {
       route: Routes.walkThrough,
     ),
     ObjModel(
-      title: 'Detail',
-      subTitle: 'Detail Screens',
-      color: Styles.green3,
-      route: Routes.detail,
-    ),
-    ObjModel(
       title: 'Bottom Sheet',
       subTitle: 'Bottom Sheet Screens',
       color: Styles.purple4,

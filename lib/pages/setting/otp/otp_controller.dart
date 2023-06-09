@@ -4,11 +4,9 @@ import 'package:get/get.dart';
 
 import '/const/import_const.dart';
 import '/pages/setting/otp/models/requests/otp_request.dart';
-import '/pages/setting/otp/services/otp_service.dart';
 
 class OtpController extends GetxController {
   String phone = '0979560184';
-  final _service = OtpService();
   final pin1Controller = TextEditingController();
   final pin2Controller = TextEditingController();
   final pin3Controller = TextEditingController();
@@ -90,14 +88,15 @@ class OtpController extends GetxController {
   }
 
   void verifyOtp() {
-    if (!stateActiveBtn) return;
-    String validator = validatePin();
-    if (validator.isNotEmpty) {
-      msgErrForm = validator;
-      update();
-      return;
-    }
+    // if (!stateActiveBtn) return;
+    // String validator = validatePin();
+    // if (validator.isNotEmpty) {
+    //   msgErrForm = validator;
+    //   update();
+    //   return;
+    // }
     //_verifyOtp();
+    Get.back();
   }
 
   void _verifyOtp() async {

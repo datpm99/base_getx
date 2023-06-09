@@ -10,10 +10,12 @@ class BeforeAfterImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0.5,
-        title:
-            Text('Before After Image', style: Styles.normalTextW700(size: 20)),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Before After Image',
+          style: Styles.normalTextW700(size: 20),
+        ),
       ),
       body: Center(
         child: BeforeAfter(

@@ -12,8 +12,8 @@ class PieChartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         elevation: 0.5,
+        backgroundColor: Colors.white,
         title: Text('Pie Chart', style: Styles.normalTextW700(size: 20)),
       ),
       body: GetBuilder<PieChartController>(

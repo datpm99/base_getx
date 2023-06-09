@@ -15,7 +15,6 @@ class OtpView extends GetView<OtpController> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [

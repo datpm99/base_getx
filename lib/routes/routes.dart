@@ -111,28 +111,6 @@ class AppPages {
       binding: BindingsBuilder.put(() => WalkThrough3Controller()),
     ),
 
-    //Detail.
-    GetPage(
-      name: Routes.detail,
-      page: () => const DetailView(),
-      binding: DetailBinding(),
-    ),
-    GetPage(
-      name: Routes.detail1,
-      page: () => const Detail1View(),
-      binding: BindingsBuilder.put(() => Detail1Controller()),
-    ),
-    GetPage(
-      name: Routes.detail2,
-      page: () => const Detail2View(),
-      binding: BindingsBuilder.put(() => Detail2Controller()),
-    ),
-    GetPage(
-      name: Routes.detail3,
-      page: () => const Detail3View(),
-      binding: BindingsBuilder.put(() => Detail3Controller()),
-    ),
-
     //Checkbox.
     GetPage(
       name: Routes.checkBox,

@@ -24,10 +24,7 @@ class DrawerView extends GetView<HomeController> {
                   Container(
                     alignment: Alignment.centerRight,
                     child: IconButton(
-                      icon: const Icon(
-                        Icons.power_settings_new,
-                        color: Styles.black2,
-                      ),
+                      icon: const Icon(Icons.close, color: Styles.black2),
                       onPressed: controller.closeDrawer,
                     ),
                   ),
@@ -39,14 +36,16 @@ class DrawerView extends GetView<HomeController> {
                       shape: BoxShape.circle,
                       border: Border.all(width: 2, color: Colors.orange),
                       color: Styles.primaryColor,
-                      image:  const DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage('assets/images/avatar1.jpeg'),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  Text("Phạm Minh Đạt", style: Styles.bigTextW600()).pSymmetric(v: 5),
-                  Text("paindat9911@gmail.com", style: Styles.mediumText()),
+
+                  const SizedBox(height: 5),
+                  Text("Phạm Minh Đạt", style: Styles.bigTextW600()),
+                  Text("paindat9911@gmail.com", style: Styles.normalText(color: Colors.grey)),
 
                   //Item.
                   const SizedBox(height: 20),

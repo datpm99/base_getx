@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '/const/import_const.dart';
 import '/models/obj_model.dart';
 import '/routes/routes.dart';

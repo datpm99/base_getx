@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/const/import_const.dart';
 import '/utils/app_validation.dart';
 import '/widgets/get_input_text.dart';
@@ -12,10 +13,11 @@ class ProfileFields {
     validationPlace: ValidationPlace.focus,
     textInputAction: TextInputAction.next,
     enabledBorder: Styles.inputBorder8(),
-    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
     errorBorder: Styles.inputBorder8(color: Colors.red),
     focusedErrorBorder: Styles.inputBorder8(color: Colors.red),
+    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
   );
+
   GetInputTextConfig email = GetInputTextConfig(
     hint: 'email',
     maxLength: AppConfigs.maxLength255,
@@ -24,9 +26,9 @@ class ProfileFields {
     validationPlace: ValidationPlace.focus,
     textInputAction: TextInputAction.next,
     enabledBorder: Styles.inputBorder8(),
-    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
     errorBorder: Styles.inputBorder8(color: Colors.red),
     focusedErrorBorder: Styles.inputBorder8(color: Colors.red),
+    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
   );
 
   GetInputTextConfig address = GetInputTextConfig(
@@ -36,8 +38,8 @@ class ProfileFields {
     validationPlace: ValidationPlace.focus,
     textInputAction: TextInputAction.done,
     enabledBorder: Styles.inputBorder8(),
-    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
     errorBorder: Styles.inputBorder8(color: Colors.red),
     focusedErrorBorder: Styles.inputBorder8(color: Colors.red),
+    focusedBorder: Styles.inputBorder8(color: Styles.primaryColor),
   );
 }

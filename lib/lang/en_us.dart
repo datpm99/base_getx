@@ -33,6 +33,7 @@ const Map<String, String> langEn = {
   'upload': 'Upload',
   'take_a_photo': 'Camera',
   'enter_dob': 'Enter Date of Birth',
+  'logout': 'Logout',
 
   //OTP
   'otp_verification': 'Confirm OTP',

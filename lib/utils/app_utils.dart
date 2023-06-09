@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '/const/import_const.dart';
@@ -15,8 +16,11 @@ import '/widgets/loaders.dart';
 
 class AppUtils {
   static final lang = Get.find<LangController>();
+  static final logger = Logger(printer: PrettyPrinter(lineLength: 100));
+  static final loggerNoStack =
+      Logger(printer: PrettyPrinter(methodCount: 0, lineLength: 100));
 
-  ///System.
+  /// System.
   static Future<void> hideLoader() async {
     if (Get.isDialogOpen!) Get.back();
   }
@@ -109,7 +113,7 @@ class AppUtils {
     return 'WEB';
   }
 
-  ///Authentication.
+  /// Authentication.
   static bool validateTokenTimeout() {
     final _storage = Get.find<StorageService>();
     String tokenTimeout = _storage.tokenTimeout;
@@ -123,15 +127,13 @@ class AppUtils {
 
   static void logout() async {
     final _storage = Get.find<StorageService>();
-    String routesLogout = Routes.signIn;
-
-    _storage.tokenTimeout = '';
+    _storage.authModel = '';
     _storage.apiToken = '';
-    _storage.userInfo = '';
-    Get.offAllNamed(routesLogout);
+    _storage.tokenTimeout = '';
+    Get.offAllNamed(Routes.signIn);
   }
 
-  ///File.
+  /// File.
   static Future<File> writeFile(var data) async {
     Directory tempDir = await getTemporaryDirectory();
     var filePath = tempDir.path + '/file_01.png';
@@ -160,13 +162,13 @@ class AppUtils {
     return ((fileSize / pow(1024, i)).toStringAsFixed(round)) + suffixes[i];
   }
 
-  ///Image.
+  /// Image.
   static bool checkFormatImage(String path) {
     String image = path.split('.').last.toLowerCase();
     return (image == 'png' || image == 'jpg');
   }
 
-  ///Utils.
+  /// Utils.
   static String getFirstCharacter(String name) {
     if (name.isEmpty) return '';
     name = name.trim();
@@ -186,7 +188,7 @@ class AppUtils {
     return text.substring(0, 15) + ' ...';
   }
 
-  ///Error api.
+  /// Error api.
   static void showMessApi(var result, String nameFunc) {
     if (result != null && result.message.isNotEmpty) {
       AppUtils.showError(result.message);
@@ -199,7 +201,7 @@ class AppUtils {
     }
   }
 
-  ///Color selectBox.
+  /// Color selectBox.
   static Color getColorBgSelectedItem(int id, var item) {
     if (item.id == id) return Styles.blue8;
     return Colors.white;
@@ -221,5 +223,18 @@ class AppUtils {
     int rd = Random().nextInt(50);
     if (rd == 0) rd = 1;
     return 'assets/icons/ic_$rd.png';
+  }
+
+  /// Logger.
+  static void showLogInfo(String msg) {
+    loggerNoStack.i(msg);
+  }
+
+  static void showLogWarning(String msg) {
+    loggerNoStack.w(msg);
+  }
+
+  static void showLogError(String msg) {
+    logger.e(msg);
   }
 }

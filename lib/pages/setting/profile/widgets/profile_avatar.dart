@@ -21,10 +21,20 @@ class ProfileAvatar extends GetView<ProfileController> {
             (controller.isPicker.value)
                 ? ClipRRect(
                     borderRadius: BorderRadius.circular(60),
-                    child: Image.file(controller.file,
-                        width: 120, height: 120, fit: BoxFit.cover),
+                    child: Image.file(
+                      controller.file,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
                   )
-                : const CircleAvatar(backgroundColor: Styles.primaryColor),
+                : CircleAvatar(
+                    backgroundColor: Styles.primaryColor,
+                    child: Text(
+                      'DAT',
+                      style: Styles.bigTextW600(color: Colors.white),
+                    ),
+                  ),
             Positioned(
               right: -10,
               bottom: 0,

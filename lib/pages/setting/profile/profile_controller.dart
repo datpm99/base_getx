@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import '/utils/date_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,8 +7,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '/const/import_const.dart';
 import '/lang/lang_controller.dart';
+import '/utils/date_formatter.dart';
 import '/widgets/get_input_text.dart';
-import 'models/gender_model.dart';
 import 'profile_fields.dart';
 
 class ProfileController extends GetxController {
@@ -22,33 +21,17 @@ class ProfileController extends GetxController {
 
   GetInputTextConfig get address => _fields.address;
 
-  //List Gender.
-  List<GenderModel> lstGender = [];
-  late GenderModel valueGender;
-
-  void initDataGender() {
-    lstGender.add(GenderModel(id: 0, name: 'male'.tr));
-    lstGender.add(GenderModel(id: 1, name: 'female'.tr));
-    lstGender.add(GenderModel(id: 2, name: 'other'.tr));
-    valueGender = lstGender.first;
-  }
-
-  void selectedGender(GenderModel model) {
-    valueGender = model;
-    update();
-  }
-
   //Date of Birth.
   DateTime selectedDate = DateTime.now();
   RxString strDob = 'enter_dob'.tr.obs;
   RxBool isSelectDate = false.obs;
 
-  selectDate(BuildContext context) async {
+  void selectDate(BuildContext context) async {
     final DateTime? picked = await DateFormatter.datePicker(context,
         initDate: selectedDate, errorFormatText: '');
     if (picked != null && picked != selectedDate) {
       selectedDate = picked;
-      strDob.value = DateFormatter.formatDate2(selectedDate);
+      strDob.value = DateFormatter.formatDate1(selectedDate);
       isSelectDate.value = true;
     }
   }
@@ -61,7 +44,7 @@ class ProfileController extends GetxController {
     Get.back();
   }
 
-  ///Image picker.
+  /// Image picker.
   late File file;
   RxBool isPicker = false.obs;
 
@@ -104,11 +87,5 @@ class ProfileController extends GetxController {
     } else {
       _pickImg(ImageSource.gallery);
     }
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    initDataGender();
   }
 }

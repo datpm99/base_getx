@@ -11,9 +11,8 @@ import 'package:path/path.dart';
 import '/services/storage/storage_service.dart';
 import '/utils/app_utils.dart';
 
-//const domain= 'https://service.mdo.com.vn/api/';
-// const domain = 'https://mdo-staging.bssd.vn/api/';
 const domain = 'https://jsonplaceholder.typicode.com/';
+
 final _storage = Get.find<StorageService>();
 
 class BaseApi {
@@ -22,33 +21,27 @@ class BaseApi {
   interceptors() async {
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        // if (validateSessionTimeout(options.path)) {
-        //   return handler.next(options);
-        // }
-        return handler.next(options);
-      },
-      onResponse: (response, handler) async {
-        if (!kReleaseMode) {
-          debugPrint('\n=================================================');
-          debugPrint('${response.requestOptions.method}: ${response.requestOptions.uri}');
-          debugPrint('PARAMS: ${response.requestOptions.data}');
-          // debugPrint('HEADER: ${response.requestOptions.headers}');
-          debugPrint('RESPONSE: ${response.data}');
-          debugPrint('=================================================\n');
+        if (validateSessionTimeout(options.path)) {
+          return handler.next(options);
         }
-
+      },
+      onResponse: (response, handler) {
+        AppUtils.showLogInfo(
+          '${response.requestOptions.method}: ${response.requestOptions.uri}'
+          '\nPARAMS: ${response.requestOptions.data}'
+          '\nRESPONSE: ${response.data}',
+        );
         return handler.next(response);
       },
       onError: (DioError e, handler) {
-        debugPrint('\n=================================================');
-        debugPrint('ERROR: ${e.requestOptions.method}: ${e.requestOptions.uri}');
-        debugPrint('ERROR: PARAMS: ${e.requestOptions.data}');
-        debugPrint('ERROR: HEADER: ${e.requestOptions.headers}');
-        debugPrint('ERROR: ${e.message}');
-        debugPrint('ERROR: ${e.response.toString()}');
-        debugPrint('=================================================\n');
-
-        return handler.next(e); //continue
+        AppUtils.showLogError(
+          '${e.requestOptions.method}: ${e.requestOptions.uri}'
+          '\nPARAMS: ${e.requestOptions.data}'
+          '\nHEADER: ${e.requestOptions.headers}'
+          '\n${e.message}'
+          '\n${e.response.toString()}',
+        );
+        return handler.next(e);
       },
     ));
   }
@@ -92,17 +85,16 @@ class BaseApi {
     if (token.isNotEmpty) {
       dio.options.headers['Authorization'] = 'Bearer $token';
     }
-    //dio.options.headers['domain'] = _storage.companyCode;
+
     dio.options.responseType = ResponseType.json;
     dio.options.contentType = 'application/json';
 
     //Check lang code.
-    // String localeCode = _storage.language.split('_')[0];
-    // dio.options.headers['Accept-Language'] = localeCode;
+    String localeCode = _storage.language.split('_')[0];
+    dio.options.headers['Accept-Language'] = localeCode;
   }
 
-  Future<Response?> getRequest(
-      {required String url, String token = '', var data}) async {
+  Future<Response?> getRequest({required String url, String token = '', var data}) async {
     try {
       settingHeaderRequest(token);
       if (data != null) return await dio.get(url, queryParameters: data);
@@ -115,8 +107,7 @@ class BaseApi {
     return null;
   }
 
-  Future<Response?> postRequest(
-      {required String url, String token = '', required String data}) async {
+  Future<Response?> postRequest({required String url, String token = '', required String data}) async {
     try {
       settingHeaderRequest(token);
       return await dio.post(url, data: data);
@@ -128,8 +119,7 @@ class BaseApi {
     return null;
   }
 
-  Future<Response?> putRequest(
-      {required String url, String token = '', required String data}) async {
+  Future<Response?> putRequest({required String url, String token = '', required String data}) async {
     try {
       settingHeaderRequest(token);
       return await dio.put(url, data: data);
@@ -141,8 +131,7 @@ class BaseApi {
     return null;
   }
 
-  Future<Response?> deleteRequest(
-      {required String url, String token = '', var data}) async {
+  Future<Response?> deleteRequest({required String url, String token = '', var data}) async {
     try {
       settingHeaderRequest(token);
       return await dio.delete(url, data: data);
@@ -171,12 +160,11 @@ class BaseApi {
 
   Future<Response?> uploadFile(String url, String token, File file) async {
     try {
-      String fileName = file.path.split('/').last;
       settingHeaderRequest(token);
 
       final parFile = await MultipartFile.fromFile(
         file.path,
-        filename: fileName,
+        filename: file.path.split('/').last,
         contentType: MediaType('image', 'png'),
       );
       FormData formData = FormData.fromMap({
@@ -192,8 +180,7 @@ class BaseApi {
     return null;
   }
 
-  Future<Response?> uploadMultipleFile(
-      String url, String token, List<File> files) async {
+  Future<Response?> uploadMultipleFile(String url, String token, List<File> files) async {
     try {
       settingHeaderRequest(token);
       dio.options.contentType = 'multipart/form-data';

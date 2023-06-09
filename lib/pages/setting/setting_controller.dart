@@ -32,9 +32,5 @@ class SettingController extends GetxController {
     Get.back();
   }
 
-  void onSignIn() => Get.offNamed(Routes.signIn);
-
-  void onSignUp() => Get.offNamed(Routes.signUp);
-
   void onOtp() => Get.toNamed(Routes.otp);
 }

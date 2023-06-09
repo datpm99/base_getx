@@ -33,6 +33,7 @@ const Map<String, String> langVi = {
   'upload': 'Tải lên',
   'take_a_photo': 'Camera',
   'enter_dob': 'Nhập ngày sinh',
+  'logout': 'Đăng xuất',
 
   //OTP
   'otp_verification': 'Xác nhận mã OTP',

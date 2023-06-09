@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '/utils/app_utils.dart';
 import 'setting_controller.dart';
-import 'widgets/item_user.dart';
+import 'widgets/item_setting.dart';
 import 'widgets/item_user_avatar.dart';
 
 class SettingView extends GetView<SettingController> {
@@ -17,7 +19,7 @@ class SettingView extends GetView<SettingController> {
             children: [
               const ItemUserAvatar(),
               Obx(() {
-                return ItemUser(
+                return ItemSetting(
                   text: controller.textMode.value,
                   onTap: controller.onChangeTheme,
                   icon: (controller.modeLight.value)
@@ -25,25 +27,20 @@ class SettingView extends GetView<SettingController> {
                       : Icons.dark_mode,
                 );
               }),
-              ItemUser(
+              ItemSetting(
                 text: 'language',
                 onTap: controller.onLanguage,
                 icon: Icons.language,
               ),
-              ItemUser(
-                text: 'sign_in',
-                onTap: controller.onSignIn,
-                icon: Icons.login,
-              ),
-              ItemUser(
-                text: 'sign_up',
-                onTap: controller.onSignUp,
-                icon: Icons.app_registration,
-              ),
-              ItemUser(
+              ItemSetting(
                 text: 'otp',
                 onTap: controller.onOtp,
                 icon: Icons.vpn_key,
+              ),
+              const ItemSetting(
+                text: 'logout',
+                onTap: AppUtils.logout,
+                icon: Icons.logout,
               ),
             ],
           ),

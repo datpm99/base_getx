@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '/const/import_const.dart';
 import '/routes/routes.dart';
 import '/widgets/get_input_text.dart';
 import 'models/requests/sign_in_request.dart';
-import 'services/sign_in_service.dart';
 import 'sign_in_fields.dart';
 
 class SignInController extends GetxController {
   final _storage = Get.find<StorageService>();
-  final _service = SignInService();
   final _fields = SignInFields();
 
   GetInputTextConfig get phone => _fields.phone;
@@ -21,8 +18,7 @@ class SignInController extends GetxController {
     bool isPhone = phone.validate();
     bool isPassword = password.validate();
     if (isPhone && isPassword) {
-      debugPrint('login success!');
-      Get.offAllNamed(Routes.root);
+      _login();
     }
   }
 
@@ -34,23 +30,14 @@ class SignInController extends GetxController {
       deviceId: _storage.deviceID,
     );
 
-    var result = await _service.login(request.toJson());
+    _storage.authModel = request.toJson();
+    await 1.delay();
     AppUtils.hideLoader();
 
-    if (result != null && result.errorCode == StatusCode.success) {
-      if (result.data == null) return;
-
-      //Set token.
-      DateTime sessionTimeout =
-          DateTime.now().add(Duration(seconds: result.data!.tokenTimeout));
-      _storage.apiToken = result.data!.token;
-      _storage.tokenTimeout = sessionTimeout.toString();
-
-      Get.offAllNamed(Routes.root);
-      return;
-    }
-
-    AppUtils.showMessApi(result, '_login');
+    //Set data.
+    DateTime tokenTimeout = DateTime.now().add(const Duration(minutes: 60));
+    _storage.tokenTimeout = tokenTimeout.toString();
+    Get.offAllNamed(Routes.root);
   }
 
   @override

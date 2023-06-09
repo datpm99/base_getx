@@ -6,7 +6,7 @@ import '/lang/lang_controller.dart';
 class TimeFormatter {
   static final lang = Get.find<LangController>();
 
-  ///Time picker.
+  /// Time picker.
   static Future<TimeOfDay?> timeNowPicker(BuildContext ctx) async {
     return await showTimePicker(
       initialTime: TimeOfDay.now(),
@@ -43,5 +43,5 @@ class TimeFormatter {
     );
   }
 
-  ///Format time.
+  /// Format time.
 }

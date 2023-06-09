@@ -103,6 +103,8 @@ class Styles {
   static const green5 = Color(0xff22ce9a);
   static const green6 = Color(0xFF2B5266);
   static const green7 = Color(0xFF18CF18);
+  static const green8 = Color(0xff217b56);
+  static const green9 = Color(0xffbdd7cc);
 
   //Yellow.
   static const yellow = Color(0xffFFAF2E);
@@ -111,6 +113,7 @@ class Styles {
   static const yellow3 = Color(0xfff4b428);
   static const yellow4 = Color(0xfff3b45c);
   static const yellow5 = Color(0xffFBC800);
+  static const yellow6 = Color(0xffffd644);
 
   //Orange.
   static const orange = Color(0xfffc4a1a);

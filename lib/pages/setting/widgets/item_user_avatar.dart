@@ -16,10 +16,9 @@ class ItemUserAvatar extends GetView<SettingController> {
         onPressed: controller.onProfile,
         style: TextButton.styleFrom(
           primary: Styles.primaryColor,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           backgroundColor: Colors.grey[100],
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Row(
           children: [

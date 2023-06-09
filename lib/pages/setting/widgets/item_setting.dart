@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/const/import_const.dart';
 
-class ItemUser extends StatelessWidget {
-  const ItemUser({
+class ItemSetting extends StatelessWidget {
+  const ItemSetting({
     Key? key,
     required this.icon,
     required this.text,
@@ -22,10 +22,9 @@ class ItemUser extends StatelessWidget {
         onPressed: onTap,
         style: TextButton.styleFrom(
           primary: Styles.primaryColor,
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           backgroundColor: Colors.grey[100],
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Row(
           children: [

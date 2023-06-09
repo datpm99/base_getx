@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '/const/theme/styles.dart';
 
 class NoticeDialog extends StatelessWidget {

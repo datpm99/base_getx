@@ -25,9 +25,6 @@ class StorageService extends GetxService implements BaseService {
   String get apiToken => _box.read(_Keys.apiToken) ?? '';
   set apiToken(String value) => _write(_Keys.apiToken, value);
 
-  String get userInfo => _box.read(_Keys.userInfo) ?? '';
-  set userInfo(String value) => _write(_Keys.userInfo, value);
-
   String get authModel => _box.read(_Keys.authModel) ?? '';
   set authModel(String value) => _write(_Keys.authModel, value);
 
@@ -40,15 +37,6 @@ class StorageService extends GetxService implements BaseService {
   //Data.
   bool get reloadData => _box.read(_Keys.reloadData) ?? false;
   set reloadData(bool value) => _write(_Keys.reloadData, value);
-
-  String get loginType => _box.read(_Keys.loginType) ?? '';
-  set loginType(String value) => _write(_Keys.loginType, value);
-
-  String get companyCode => _box.read(_Keys.companyCode) ?? '';
-  set companyCode(String value) => _write(_Keys.companyCode, value);
-
-  bool get loginDeepLink => _box.read(_Keys.loginDeepLink) ?? false;
-  set loginDeepLink(bool value) => _write(_Keys.loginDeepLink, value);
 
   @override
   Future<void> init() async {
@@ -80,14 +68,10 @@ abstract class _Keys {
 
   //Auth.
   static const String apiToken = 'api_token';
-  static const String userInfo = 'user_info';
   static const String authModel = 'auth_model';
   static const String tokenTimeout = 'tokenTimeout';
   static const String useFingerprint = 'use_finger_print';
-  static const String loginDeepLink = 'login_deeplink';
 
   //Data.
   static const String reloadData = 'reload_data';
-  static const String loginType = 'login_type';
-  static const String companyCode = 'company_code';
 }

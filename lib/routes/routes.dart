@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+
 import '/pages/pages.dart';
+import '/utils/app_utils.dart';
 
 class Routes {
   static const root = '/';
@@ -49,7 +51,11 @@ class Routes {
 }
 
 class AppPages {
-  static String initPage = Routes.signIn;
+  static String getInitPage() {
+    if (AppUtils.validateTokenTimeout()) return Routes.root;
+
+    return Routes.signIn;
+  }
 
   static final routes = [
     GetPage(

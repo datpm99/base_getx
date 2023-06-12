@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '/const/import_const.dart';
 import '/widgets/buttons/default_button.dart';
+import '/widgets/skeleton_widget.dart';
 import 'unit_test_controller.dart';
 
 class UnitTestView extends GetView<UnitTestController> {
@@ -20,6 +21,8 @@ class UnitTestView extends GetView<UnitTestController> {
         children: [
           GetBuilder<UnitTestController>(
             builder: (c) {
+              if (c.isLoadData) return const SkeletonWidget();
+
               return ListView.builder(
                 itemCount: c.lstComment.length,
                 padding: const EdgeInsets.all(10),
@@ -31,11 +34,19 @@ class UnitTestView extends GetView<UnitTestController> {
                     boxShadow: Styles.boxShadow1(),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      Text('EMAIL: ${c.lstComment[index].email}'),
-                      Text('NAME: ${c.lstComment[index].name}'),
+                      const CircleAvatar(
+                        child: Text('A'),
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(c.lstComment[index].email),
+                          Text(c.lstComment[index].name),
+                        ],
+                      ),
                     ],
                   ),
                 ),

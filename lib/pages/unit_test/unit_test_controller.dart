@@ -11,11 +11,13 @@ class UnitTestController extends GetxController {
   final _service = UnitTestService();
   List<CommentModel> lstComment = [];
   bool postSuccess = false;
+  bool isLoadData = true;
 
   Future<void> getListComment() async {
-    AppUtils.showLoader();
     final result = await _service.getListComment();
-    AppUtils.hideLoader();
+    await 1.delay();
+    isLoadData = false;
+
     if (result != null) {
       lstComment.addAll(result);
       update();

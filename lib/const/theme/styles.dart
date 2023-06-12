@@ -28,6 +28,7 @@ class Styles {
   static const white8 = Color(0xffD4D4DB);
   static const white9 = Color(0xffF4F4F4);
   static const white10 = Color(0xffC4C4C4);
+  static const white11 = Color(0xffe8e8e8);
 
   //Grey.
   static const grey1 = Color(0xFFE0E0E0);

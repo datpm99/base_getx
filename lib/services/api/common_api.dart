@@ -14,6 +14,6 @@ class CommonApi {
   static String globalAppNotification = 'notification/public/global-app-notification';
 
   //Get data demo.
-  static String getComment = 'comments?postId=1';
-  static String postComment = 'posts';
+  static String getUsers = 'users';
+  static String createUser = 'users';
 }

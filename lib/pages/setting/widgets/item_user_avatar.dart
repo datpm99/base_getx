@@ -13,7 +13,7 @@ class ItemUserAvatar extends GetView<SettingController> {
     return SizedBox(
       height: 80,
       child: TextButton(
-        onPressed: controller.onProfile,
+        onPressed: (){},
         style: TextButton.styleFrom(
           primary: Styles.primaryColor,
           backgroundColor: Colors.grey[100],
@@ -33,13 +33,12 @@ class ItemUserAvatar extends GetView<SettingController> {
                   style: Styles.mediumTextW700(color: Colors.black87),
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text(
-                  'personal_info'.tr,
-                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                const Text(
+                  'Mr.Mol',
+                  style: TextStyle(color: Colors.grey, fontSize: 13),
                 ),
               ],
-            ).expand(),
-            const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+            ),
           ],
         ),
       ),

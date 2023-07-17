@@ -573,14 +573,6 @@ class LoginView extends StatelessWidget with AdaptivePage{
 <img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/10_wt2.png?alt=media&token=a4314d77-1cf6-4b21-90c7-411c79b80aa7" width="200" height="432" />
 </p>
 
-## BottomSheet
-<p align="left" width="100%">
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/12_bsheet1.png?alt=media&token=b750a2b8-7daf-4f0a-93c5-6fa362cfdd65" width="200" height="432"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/13_bsheet2.png?alt=media&token=7aadced3-a3a9-4df3-a5cc-6134902f7bda" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/14_bsheet3.png?alt=media&token=c0b3cfe4-50d1-4539-bd46-b23fd5415420" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/15_bsheet4.png?alt=media&token=4b10cf53-c86b-4e81-ae51-94c5d548a439" width="200" height="432" />
-</p>
-
 ## Drawer
 <img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/16_drawer.png?alt=media&token=f015e948-aa42-4864-bc73-f510b2a3bfa4" width="200" height="432"/>
 

@@ -34,6 +34,7 @@ const Map<String, String> langEn = {
   'take_a_photo': 'Camera',
   'enter_dob': 'Enter Date of Birth',
   'logout': 'Logout',
+  'confirm_exit': 'Confirm Exit',
 
   //OTP
   'otp_verification': 'Confirm OTP',
@@ -72,7 +73,7 @@ const Map<String, String> langEn = {
   'msg_match_pass': 'Confirm Password is different from New Password',
   'msg_required': 'Please enter information',
   'msg_error_reason': 'You have not entered a reason',
-  'msg_close_app': 'Do you want to quit?',
+  'msg_close_app': 'Do you want to exit the application?',
   'msg_pass_rule1':
       'The password must be between 8 - 50 characters, contain uppercase, lowercase, numeric, and special characters including: *@#\$%^&+=',
 };

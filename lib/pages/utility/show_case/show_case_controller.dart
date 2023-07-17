@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:showcaseview/showcaseview.dart';
-
 import 'email_model.dart';
 
 class ShowcaseController extends GetxController {

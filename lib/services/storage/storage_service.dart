@@ -21,6 +21,9 @@ class StorageService extends GetxService implements BaseService {
   String get language => _box.read(_Keys.language) ?? 'vi_VN';
   set language(String value) => _write(_Keys.language, value);
 
+  bool get firstLogin => _box.read(_Keys.firstLogin) ?? false;
+  set firstLogin(bool value) => _write(_Keys.firstLogin, value);
+
   //Auth.
   String get apiToken => _box.read(_Keys.apiToken) ?? '';
   set apiToken(String value) => _write(_Keys.apiToken, value);
@@ -42,6 +45,7 @@ class StorageService extends GetxService implements BaseService {
   Future<void> init() async {
     _box = GetStorage('settings');
     await _box.initStorage;
+
     _isFirstLaunch = _box.read(_Keys.firstLaunch) ?? true;
     if (_isFirstLaunch) {
       _box.write(_Keys.firstLaunch, false);
@@ -62,6 +66,7 @@ class StorageService extends GetxService implements BaseService {
 abstract class _Keys {
   //Base.
   static const String firstLaunch = 'first_launch';
+  static const String firstLogin = 'first_login';
   static const String deviceName = 'device_name';
   static const String deviceID = 'device_id';
   static const String language = 'language';

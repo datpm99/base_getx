@@ -22,9 +22,9 @@ class SignInView extends GetView<SignInController> {
               const CusImageIcon(asset: 'assets/images/logo.png', size: 200),
               Text(
                 'sign_in'.tr.toUpperCase(),
-                style: Styles.normalTextW700(size: 24, color: Colors.grey),
+                style: Styles.normalTextW700(size: 24),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               const SignInForm(),
               const DividerForm().py(30),
               const NoAccountText(),

@@ -14,11 +14,13 @@ class SignUpForm extends GetView<SignUpController> {
     return Column(
       children: [
         GetInputText(config: controller.fullName),
-        GetInputText(config: controller.phone).py(10),
+        GetInputText(config: controller.phone).py(20),
         GetInputText(config: controller.password),
-        const SizedBox(height: 20),
+        const SizedBox(height: 30),
         DefaultButton(
           radius: 5,
+          elevation: 0,
+          width: Get.width,
           onTap: controller.onSignUp,
           text: 'sign_up',
         ),

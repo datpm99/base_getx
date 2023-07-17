@@ -8,15 +8,17 @@ class CusTooltip extends StatelessWidget {
     required this.content,
     required this.widget,
     this.tailWidth = 10.0,
+    this.model = TooltipTriggerMode.tap,
   }) : super(key: key);
   final String content;
   final Widget widget;
   final double tailWidth;
+  final TooltipTriggerMode model;
 
   @override
   Widget build(BuildContext context) {
     return JustTheTooltip(
-      triggerMode: TooltipTriggerMode.tap,
+      triggerMode: model,
       showDuration: const Duration(seconds: 5),
       backgroundColor: Styles.black1,
       preferredDirection: AxisDirection.up,

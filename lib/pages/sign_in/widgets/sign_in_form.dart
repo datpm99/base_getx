@@ -13,28 +13,16 @@ class SignInForm extends GetView<SignInController> {
     return Column(
       children: [
         GetInputText(config: controller.phone),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         GetInputText(config: controller.password),
-        Row(
-          children: [
-            const Spacer(),
-            GestureDetector(
-              //onTap: () => Get.toNamed(Routes.FORGOT_PASSWORD),
-              child: Text(
-                "forgot_password".tr,
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
-          ],
-        ),
         const SizedBox(height: 30),
         DefaultButton(
           radius: 5,
-          onTap: controller.onSignIn,
+          elevation: 0,
+          height: 44,
+          width: Get.width,
           text: 'sign_in',
+          onTap: controller.onSignIn,
         ),
       ],
     );

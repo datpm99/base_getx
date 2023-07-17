@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '/const/import_const.dart';
-import '/widgets/buttons/default_button.dart';
-import '/widgets/skeleton_widget.dart';
+import '/widgets/listview_widget.dart';
 import 'unit_test_controller.dart';
 
-class UnitTestView extends GetView<UnitTestController> {
+class UnitTestView extends StatelessWidget {
   const UnitTestView({Key? key}) : super(key: key);
 
   @override
@@ -17,47 +16,51 @@ class UnitTestView extends GetView<UnitTestController> {
         backgroundColor: Colors.white,
         title: Text('Unit Test', style: Styles.normalTextW700(size: 20)),
       ),
-      body: Column(
-        children: [
-          GetBuilder<UnitTestController>(
-            builder: (c) {
-              if (c.isLoadData) return const SkeletonWidget();
-
-              return ListView.builder(
-                itemCount: c.lstComment.length,
-                padding: const EdgeInsets.all(10),
-                itemBuilder: (ctx, index) => Container(
-                  margin: const EdgeInsets.only(bottom: 10),
-                  padding: const EdgeInsets.all(10),
+      body: SafeArea(
+        child: GetBuilder<UnitTestController>(
+          builder: (c) {
+            return ListViewWidget(
+              isLoading: c.isLoading,
+              itemCount: c.lstUser.length,
+              scrollController: c.scrollController,
+              onRefresh: c.onRefresh,
+              showIndicatorLoadMore: (!c.isLoadData),
+              child: (ctx, index) {
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: Styles.boxShadow1(),
+                    boxShadow: Styles.boxShadow2(),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     children: [
-                      const CircleAvatar(
-                        child: Text('A'),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.network(
+                          c.lstUser[index].avatar,
+                          width: 48,
+                          height: 48,
+                        ),
                       ),
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(c.lstComment[index].email),
-                          Text(c.lstComment[index].name),
+                          Text(c.lstUser[index].firstName +
+                              ' ' +
+                              c.lstUser[index].lastName),
+                          Text(c.lstUser[index].email),
                         ],
                       ),
                     ],
                   ),
-                ),
-              );
-            },
-          ).expand(),
-          DefaultButton(
-            text: 'Post comment',
-            onTap: controller.postComment,
-          ).pOnly(top: 10, bottom: 20),
-        ],
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

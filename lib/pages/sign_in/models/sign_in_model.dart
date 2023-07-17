@@ -37,3 +37,11 @@ class Data {
         captcha: json.containsKey("captcha") ? json["captcha"] : '',
       );
 }
+
+class SignInModel2 {
+  int? errorCode;
+  String? message;
+  Data? data;
+
+
+}

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '/const/import_const.dart';
 import '/models/obj_model.dart';
 import '/routes/routes.dart';
@@ -12,12 +11,6 @@ class UtilityController extends GetxController {
       subTitle: 'Before After Image Screens',
       color: Styles.red6,
       route: Routes.beforeAfterImg,
-    ),
-    ObjModel(
-      title: 'Confetti',
-      subTitle: 'Confetti Screens',
-      color: Styles.green3,
-      route: Routes.confetti,
     ),
     ObjModel(
       title: 'TinderCard',
@@ -36,6 +29,12 @@ class UtilityController extends GetxController {
       subTitle: 'Unit Test Screens',
       color: Styles.primaryColor,
       route: Routes.unitTest,
+    ),
+    ObjModel(
+      title: 'Paint',
+      subTitle: 'Paint widgets',
+      color: Styles.yellow4,
+      route: Routes.paint,
     ),
   ];
 

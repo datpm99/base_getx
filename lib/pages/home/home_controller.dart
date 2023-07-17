@@ -5,7 +5,6 @@ import '/const/import_const.dart';
 import '/models/obj_model.dart';
 import '/routes/routes.dart';
 import 'cupertino/action_sheet.dart';
-import 'cupertino/activity_indicator.dart';
 import 'cupertino/cus_alert_dialog.dart';
 
 class HomeController extends GetxController {
@@ -22,18 +21,6 @@ class HomeController extends GetxController {
       route: Routes.walkThrough,
     ),
     ObjModel(
-      title: 'Bottom Sheet',
-      subTitle: 'Bottom Sheet Screens',
-      color: Styles.purple4,
-      route: Routes.bottomSheet,
-    ),
-    ObjModel(
-      title: 'Drawer',
-      subTitle: 'Drawer Screens',
-      color: Styles.pink2,
-      route: 'Drawer',
-    ),
-    ObjModel(
       title: 'Checkbox',
       subTitle: 'Checkbox Screens',
       color: Styles.primaryColor,
@@ -46,12 +33,6 @@ class HomeController extends GetxController {
       route: Routes.chip,
     ),
     ObjModel(
-      title: 'Stepper',
-      subTitle: 'Stepper Screens',
-      color: Styles.red6,
-      route: Routes.stepper,
-    ),
-    ObjModel(
       title: 'Color Filtered',
       subTitle: 'Color Filtered Screens',
       color: Styles.green3,
@@ -62,37 +43,25 @@ class HomeController extends GetxController {
   //List widget cupertino.
   List<ObjModel> lstWidgetCupertino = [
     ObjModel(
-      title: 'Cupertino Action Sheet',
+      title: 'Action Sheet',
       subTitle: '',
       color: Styles.red6,
       route: 'CupertinoActionSheet',
     ),
     ObjModel(
-      title: 'Cupertino Activity Indicator',
-      subTitle: '',
-      color: Styles.green3,
-      route: 'CupertinoActivityIndicator',
-    ),
-    ObjModel(
-      title: 'Cupertino Alert Dialog',
+      title: 'Alert Dialog',
       subTitle: '',
       color: Styles.purple4,
       route: 'CupertinoAlertDialog',
     ),
     ObjModel(
-      title: 'Cupertino Context Menu',
+      title: 'Context Menu',
       subTitle: '',
       color: Styles.pink2,
       route: 'contextMenu',
     ),
     ObjModel(
-      title: 'Cupertino Picker',
-      subTitle: '',
-      color: Styles.primaryColor,
-      route: 'picker',
-    ),
-    ObjModel(
-      title: 'Cupertino Sliding Segmented Control',
+      title: 'Sliding Segmented Control',
       subTitle: '',
       color: Styles.yellow4,
       route: 'slidingSegmented',
@@ -101,14 +70,8 @@ class HomeController extends GetxController {
 
   void onNavigator(String route) {
     switch (route) {
-      case 'Drawer':
-        scaffoldKey.currentState!.openDrawer();
-        break;
       case 'CupertinoActionSheet':
         Get.bottomSheet(const ActionSheet());
-        break;
-      case 'CupertinoActivityIndicator':
-        Get.dialog(const ActivityIndicator());
         break;
       case 'CupertinoAlertDialog':
         Get.dialog(const CusAlertDialog());

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:skeletons/skeletons.dart';
-
 import '/const/import_const.dart';
 
 class SkeletonWidget extends StatelessWidget {

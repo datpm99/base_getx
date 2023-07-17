@@ -37,7 +37,11 @@ class SignInController extends GetxController {
     //Set data.
     DateTime tokenTimeout = DateTime.now().add(const Duration(minutes: 60));
     _storage.tokenTimeout = tokenTimeout.toString();
-    Get.offAllNamed(Routes.root);
+    if (_storage.firstLogin) {
+      Get.offAllNamed(Routes.root);
+    } else {
+      Get.offAllNamed(Routes.walkThrough);
+    }
   }
 
   @override

@@ -14,11 +14,12 @@ class DefaultOutlineButton extends StatelessWidget {
     this.width = 150,
     this.height = 48,
     this.radius = 30,
+    this.elevation = 2,
   }) : super(key: key);
   final String text;
   final VoidCallback onTap;
   final Color color, colorText;
-  final double width, height, radius;
+  final double width, height, radius, elevation;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class DefaultOutlineButton extends StatelessWidget {
           shape: Styles.borderDialog(radius: radius),
           side: BorderSide(width: 1, color: colorText),
           backgroundColor: Colors.white,
-          elevation: 2,
+          elevation: elevation,
         ),
         onPressed: onTap,
         child: AutoSizeText(

@@ -14,11 +14,12 @@ class DefaultButton extends StatelessWidget {
     this.height = 48,
     this.radius = 30,
     this.isUpper = true,
+    this.elevation = 2,
   }) : super(key: key);
   final String text;
   final VoidCallback onTap;
   final Color color;
-  final double width, height, radius;
+  final double width, height, radius, elevation;
   final bool isUpper;
 
   @override
@@ -30,6 +31,7 @@ class DefaultButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           primary: color,
+          elevation: elevation,
           shape: Styles.borderDialog(radius: radius),
         ),
         child: AutoSizeText(

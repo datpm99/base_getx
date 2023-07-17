@@ -5,8 +5,8 @@ class CircleAvatarWidget extends StatelessWidget {
   const CircleAvatarWidget({
     Key? key,
     required this.size,
-    this.color = Styles.primaryColor,
     this.text = 'D',
+    this.color = Styles.primaryColor,
   }) : super(key: key);
   final double size;
   final Color color;

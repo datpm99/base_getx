@@ -17,8 +17,7 @@ import '/widgets/loaders.dart';
 class AppUtils {
   static final lang = Get.find<LangController>();
   static final logger = Logger(printer: PrettyPrinter(lineLength: 100));
-  static final loggerNoStack =
-      Logger(printer: PrettyPrinter(methodCount: 0, lineLength: 100));
+  static final loggerNoStack = Logger(printer: PrettyPrinter(methodCount: 0, lineLength: 100));
 
   /// System.
   static Future<void> hideLoader() async {

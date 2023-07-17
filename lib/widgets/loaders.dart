@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LoaderCircular extends StatelessWidget {
-  const LoaderCircular(
-      {Key? key,
-      this.size = 64.0,
-      this.bgColor = Colors.white,
-      this.padding = 20.0})
-      : super(key: key);
+  const LoaderCircular({
+    Key? key,
+    this.size = 64.0,
+    this.padding = 20.0,
+    this.bgColor = Colors.white,
+  }) : super(key: key);
   final double size, padding;
   final Color bgColor;
 

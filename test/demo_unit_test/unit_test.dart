@@ -32,27 +32,27 @@ Future<void> main() async {
     });
   });
 
-  group('API', () {
-    test('test getListComment', () async {
-      int length = 0;
-      final result = await service.getListComment();
-      if(result != null) length = result.length;
-      expect(length, 5);
-    });
-
-    test('test postComment', () async{
-      int userId = 0;
-      Map<String, dynamic> request = {
-        "title": "foo1",
-        "body": "bar",
-        "userId": 1
-      };
-      final result = await service.postComment(jsonEncode(request));
-      if(result != null) {
-        userId = result.userId;
-      }
-
-      expect(userId, 1);
-    });
-  });
+  // group('API', () {
+  //   test('test getListComment', () async {
+  //     int length = 0;
+  //     final result = await service.getListComment();
+  //     if(result != null) length = result.length;
+  //     expect(length, 5);
+  //   });
+  //
+  //   test('test postComment', () async{
+  //     int userId = 0;
+  //     Map<String, dynamic> request = {
+  //       "title": "foo1",
+  //       "body": "bar",
+  //       "userId": 1
+  //     };
+  //     final result = await service.postComment(jsonEncode(request));
+  //     if(result != null) {
+  //       userId = result.userId;
+  //     }
+  //
+  //     expect(userId, 1);
+  //   });
+  // });
 }

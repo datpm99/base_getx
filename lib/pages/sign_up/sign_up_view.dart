@@ -22,9 +22,9 @@ class SignUpView extends GetView<SignUpController> {
               const CusImageIcon(asset: 'assets/images/logo.png', size: 200),
               Text(
                 'sign_up'.tr.toUpperCase(),
-                style: Styles.normalTextW700(size: 24, color: Colors.grey),
+                style: Styles.normalTextW700(size: 24),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
               const SignUpForm(),
               const DividerForm().py(30),
               const SignUpFooter(),

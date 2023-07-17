@@ -11,7 +11,7 @@ import 'package:path/path.dart';
 import '/services/storage/storage_service.dart';
 import '/utils/app_utils.dart';
 
-const domain = 'https://jsonplaceholder.typicode.com/';
+const domain = 'https://reqres.in/api/';
 
 final _storage = Get.find<StorageService>();
 
@@ -29,7 +29,8 @@ class BaseApi {
         AppUtils.showLogInfo(
           '${response.requestOptions.method}: ${response.requestOptions.uri}'
           '\nPARAMS: ${response.requestOptions.data}'
-          '\nRESPONSE: ${response.data}',
+          '\nRESPONSE: ${response.data}'
+          '\n',
         );
         return handler.next(response);
       },
@@ -39,8 +40,15 @@ class BaseApi {
           '\nPARAMS: ${e.requestOptions.data}'
           '\nHEADER: ${e.requestOptions.headers}'
           '\n${e.message}'
-          '\n${e.response.toString()}',
+          '\n${e.response.toString()}'
+          '\n',
         );
+
+        //Check code 403 => logout.
+        if (e.response!.statusCode == 403) {
+          AppUtils.logout();
+          AppUtils.showError('msg_session_timeout'.tr);
+        }
         return handler.next(e);
       },
     ));

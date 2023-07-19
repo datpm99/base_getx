@@ -25,7 +25,7 @@ flutter pub get
 ```
 
 ## Project Structure
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/78.png?alt=media&token=9fe34e5e-2a94-4acc-b751-9f67185b16f3"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fstructure_base_getx.png?alt=media&token=bface6b4-981c-462b-b2ae-e2c2d9dca6ae"/>
 
 - ```const```: Includes app configuration such as Theme, Role,... .<br>
 - ```lang```: Includes file languages.<br>
@@ -559,29 +559,22 @@ class LoginView extends StatelessWidget with AdaptivePage{
 
 ## Preview
 <p align="left" width="100%">
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/1_splash_screen.png?alt=media&token=e4e16d74-39f3-4008-855e-269c499553fe" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/2_login_screen.png?alt=media&token=395e8ee2-5ad0-4dcb-b138-c07f19510480" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/3_sign_up_screen.png?alt=media&token=9a24ec70-8639-40cb-9720-35af262580ee" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/7_setting_screen.png?alt=media&token=af28556a-41d5-45ed-8cb4-5e2304545607" width="200" height="432" />
-</p>
-
-## WalkThrough
-<p align="left" width="100%">
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/11_wt.png?alt=media&token=f51e6139-1a68-40ca-93de-b07207175947" width="200" height="432"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/8_wt1.png?alt=media&token=1666d98f-f7ba-408f-a782-0e779385c345" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/9_wt2.png?alt=media&token=2675f4e7-aa3d-466e-b8d6-4a83aebe3ad6" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/10_wt2.png?alt=media&token=a4314d77-1cf6-4b21-90c7-411c79b80aa7" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview1.png?alt=media&token=4b46c9e2-fa55-4768-be01-ea25d183ed1a" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview2.png?alt=media&token=9261830f-de0d-4109-be89-965b67b1f2ee" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview3.png?alt=media&token=b8c6423f-6e26-48ea-9d3d-3e56ff4068f1" width="200" height="432" />
+<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview4.png?alt=media&token=e321121c-332b-4b41-9c99-11f81bdf3dec" width="200" height="432" />
 </p>
 
 ## Drawer
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/16_drawer.png?alt=media&token=f015e948-aa42-4864-bc73-f510b2a3bfa4" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fdrawer.png?alt=media&token=a3ab4a6e-d56a-4885-9741-53b78b5b8d4f" width="200" height="432"/>
 
 ```dart
+//Drawer.
 ClipPath(
 clipper: OvalRightBorderClipper(),
 clipBehavior: Clip.antiAliasWithSaveLayer,
 child: Drawer(),
-)
+);
 
 class OvalRightBorderClipper extends CustomClipper<Path> {
   @override
@@ -605,7 +598,7 @@ class OvalRightBorderClipper extends CustomClipper<Path> {
 ```
 
 ## CheckBox
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/17_cb.png?alt=media&token=c6c18902-11f0-4a34-92ef-6c786fd85692" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcheckbox.png?alt=media&token=cae3f43a-a663-4dac-b7e8-f1521adeba6b" width="200" height="432"/>
 
 ```dart
 Container(
@@ -632,7 +625,7 @@ Container(
 ```
 
 ## Chip
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/18_chip.png?alt=media&token=5f68f4ef-69b3-459f-b439-106520bed6c8" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fchip.png?alt=media&token=6c705ddc-5c02-4e4d-bc99-fe150b3fb756" width="200" height="432"/>
 
 ```dart
 FilterChip(
@@ -660,7 +653,7 @@ FilterChip(
 ```
 
 ## ColorFiltered
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/19_color_filtered.png?alt=media&token=03a03bd7-16bd-4118-b88d-c18bfcb93411" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcolorfilter.png?alt=media&token=19c982a9-702b-4b82-a656-60f0f31d762e" width="200" height="432"/>
 
 ```dart
 ColorFiltered(
@@ -690,7 +683,7 @@ ColorFiltered(
 ```
 
 ## Cupertino Context Menu
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/20_cupertino.png?alt=media&token=bca3fa05-d5ae-4b16-a87e-e2d8f153bce7" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcontextmenu.png?alt=media&token=fea1423a-b9dd-4d60-8333-8c287ad5509e" width="200" height="432"/>
 
 ```dart
 CupertinoContextMenu(
@@ -726,7 +719,7 @@ CupertinoContextMenu(
 ```
 
 ## Cupertino Sliding Segmented Control
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/21_cupertino.png?alt=media&token=220578a0-e49f-4d9c-abae-616d8b4413ef" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fsliding_segmented.png?alt=media&token=c0a6b03f-70a9-42ee-ab7f-b4ac9cf1f96d" width="200" height="432"/>
 
 ```dart
 Column(
@@ -762,7 +755,7 @@ Column(
 ```
 
 ## ShowCase View
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/22_showCase.png?alt=media&token=120fe957-08e0-4ea5-b12d-f4dcf1aaa957" width="200" height="432"/>
+<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fshowcase.png?alt=media&token=ae0cdb3a-e759-4c1d-a521-8e534cda0609" width="200" height="432"/>
 
 ```dart
 Showcase(

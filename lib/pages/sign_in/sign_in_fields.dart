@@ -7,7 +7,7 @@ class SignInFields {
   GetInputTextConfig phone = GetInputTextConfig(
     hint: 'phone',
     maxLength: AppConfigs.maxLength11,
-    onValidate: AppValidation.phone,
+    //onValidate: AppValidation.phone,
     keyboardType: TextInputType.phone,
     validationPlace: ValidationPlace.focus,
     textInputAction: TextInputAction.next,
@@ -20,7 +20,7 @@ class SignInFields {
   GetInputTextConfig password = GetInputTextConfig(
     hint: 'password',
     maxLength: AppConfigs.maxLength50,
-    onValidate: AppValidation.password,
+    //onValidate: AppValidation.password,
     isPassword: true,
     keyboardType: TextInputType.visiblePassword,
     validationPlace: ValidationPlace.focus,

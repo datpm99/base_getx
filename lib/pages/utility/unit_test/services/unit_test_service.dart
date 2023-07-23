@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '/pages/unit_test/models/user_model.dart';
+import '/pages/utility/unit_test/models/user_model.dart';
 import '/services/api/base_api.dart';
 import '/services/api/common_api.dart';
 

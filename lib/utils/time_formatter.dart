@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '/lang/lang_controller.dart';
 
@@ -44,4 +45,7 @@ class TimeFormatter {
   }
 
   /// Format time.
+  static String formatTime1(DateTime date) {
+    return DateFormat("HH:mm").format(date);
+  }
 }

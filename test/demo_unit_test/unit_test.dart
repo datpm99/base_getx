@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:base_getx/pages/unit_test/services/unit_test_service.dart';
-import 'package:base_getx/pages/unit_test/unit_test_controller.dart';
+
+import 'package:base_getx/pages/utility/unit_test/services/unit_test_service.dart';
+import 'package:base_getx/pages/utility/unit_test/unit_test_controller.dart';
 import 'package:base_getx/services/api/base_api.dart';
 import 'package:test/test.dart';
 import 'package:get/get.dart';

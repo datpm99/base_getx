@@ -281,4 +281,14 @@ class Styles {
       borderRadius: BorderRadius.circular(radius),
     );
   }
+
+  static BoxDecoration boxDecoration3({double radius = 8}) {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(radius),
+        topRight: Radius.circular(radius),
+      ),
+    );
+  }
 }

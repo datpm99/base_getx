@@ -36,6 +36,7 @@ class Routes {
   static const tinderCard = '/tinderCard';
   static const unitTest = '/unitTest';
   static const paint = '/paint';
+  static const form = '/form';
 }
 
 class AppPages {
@@ -142,6 +143,11 @@ class AppPages {
       name: Routes.paint,
       page: () => const PaintView(),
       binding: BindingsBuilder.put(() => PaintController()),
+    ),
+    GetPage(
+      name: Routes.form,
+      page: () => const FormView(),
+      binding: BindingsBuilder.put(() => FormController()),
     ),
   ];
 }

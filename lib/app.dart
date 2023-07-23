@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
+          supportedLocales: const [Locale('vi'), Locale('en')],
           enableLog: false,
           debugShowCheckedModeBanner: false,
           color: Colors.blue,

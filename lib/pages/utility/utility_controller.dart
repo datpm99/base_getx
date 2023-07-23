@@ -36,6 +36,12 @@ class UtilityController extends GetxController {
       color: Styles.yellow4,
       route: Routes.paint,
     ),
+    ObjModel(
+      title: 'Form',
+      subTitle: 'Form widgets',
+      color: Styles.green3,
+      route: Routes.form,
+    ),
   ];
 
   void onNavigator(String route) {

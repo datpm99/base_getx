@@ -35,6 +35,7 @@ const Map<String, String> langVi = {
   'enter_dob': 'Nhập ngày sinh',
   'logout': 'Đăng xuất',
   'confirm_exit': 'Xác Nhận Thoát',
+  'list_empty': 'Danh sách rỗng!',
 
   //OTP
   'otp_verification': 'Xác nhận mã OTP',

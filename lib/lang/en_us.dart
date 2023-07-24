@@ -35,6 +35,7 @@ const Map<String, String> langEn = {
   'enter_dob': 'Enter Date of Birth',
   'logout': 'Logout',
   'confirm_exit': 'Confirm Exit',
+  'list_empty': 'List empty!',
 
   //OTP
   'otp_verification': 'Confirm OTP',

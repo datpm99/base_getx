@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -29,9 +30,9 @@ class BaseApi {
         AppUtils.showLogInfo(
           '${response.requestOptions.method}: ${response.requestOptions.uri}'
           '\nPARAMS: ${response.requestOptions.data}'
-          '\nRESPONSE: ${response.data}'
-          '\n',
+          '\nHEADER: ${response.requestOptions.headers}'
         );
+        printResponse(response);
         return handler.next(response);
       },
       onError: (DioError e, handler) {
@@ -39,10 +40,9 @@ class BaseApi {
           '${e.requestOptions.method}: ${e.requestOptions.uri}'
           '\nPARAMS: ${e.requestOptions.data}'
           '\nHEADER: ${e.requestOptions.headers}'
-          '\n${e.message}'
-          '\n${e.response.toString()}'
-          '\n',
+          '\nERROR: ${e.message}'
         );
+        printResponse(e.response!);
 
         //Check code 403 => logout.
         if (e.response!.statusCode == 403) {
@@ -52,6 +52,13 @@ class BaseApi {
         return handler.next(e);
       },
     ));
+  }
+
+  void printResponse(Response response) {
+    final prettyString = const JsonEncoder.withIndent('  ').convert(response.data);
+    debugPrint(prettyString);
+    debugPrint('------------------------------ END ------------------------------');
+    debugPrint('\n');
   }
 
   validateSessionTimeout(String path) {

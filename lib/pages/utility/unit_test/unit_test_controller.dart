@@ -31,6 +31,7 @@ class UnitTestController extends GetxController {
     }
 
     debugPrint('error ---> getListUser');
+    update();
   }
 
   void loadMoreUser() {

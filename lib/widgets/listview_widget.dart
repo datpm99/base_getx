@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import '/const/import_const.dart';
+import 'list_empty_widget.dart';
 import 'skeleton_widget.dart';
 
 class ListViewWidget extends StatelessWidget {
@@ -32,6 +33,8 @@ class ListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!isLoading && itemCount == 0) return const ListEmptyWidget();
+
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       child: isLoading

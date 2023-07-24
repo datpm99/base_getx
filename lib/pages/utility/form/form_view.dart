@@ -1,3 +1,4 @@
+import 'package:base_getx/widgets/form/select_field_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -127,7 +128,27 @@ class FormView extends GetView<FormController> {
                       suffixIcon: const Icon(Icons.access_time),
                       onChangedDate: controller.onChangedTime,
                       mode: CupertinoDatePickerMode.time,
+                    ),
+                    const Divider(height: 50, color: Colors.grey),
+
+                    //Selected field.
+                    SelectFieldWidget(
+                      title: 'Car',
+                      titleBottomSheet: 'Car',
+                      hintText: 'Car',
+                      ctrl: controller.selectCarCtrl,
+                      listData: controller.listCar,
+                      onSelected: controller.onSelectedCar,
                     ).pOnly(bottom: 12),
+                    SelectFieldWidget(
+                      title: 'Fruit',
+                      titleBottomSheet: 'Fruit',
+                      hintText: 'Fruit',
+                      ctrl: controller.selectFruitCtrl,
+                      listData: controller.listFruit,
+                      onSelected: controller.onSelectedFruit,
+                    ).pOnly(bottom: 12),
+
                     DefaultButton(
                       text: 'Submit',
                       onTap: () => controller.submitForm(ctx),

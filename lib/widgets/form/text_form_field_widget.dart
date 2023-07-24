@@ -23,6 +23,7 @@ class TextFormFieldWidget extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.isPassWord = false,
     this.onTap,
+    this.isShowIcClear = true,
   }) : super(key: key);
   final TextEditingController ctrl;
   final String hintText;
@@ -31,7 +32,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
-  final bool readOnly, enabled, isPassWord;
+  final bool readOnly, enabled, isPassWord, isShowIcClear;
   final EdgeInsetsGeometry? contentPadding;
   final Widget? suffixIcon, prefixIcon;
   final int? maxLength;
@@ -83,7 +84,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
     }
 
     // Icon clear.
-    if (widget.suffixIcon == null && showIconClear.value) {
+    if (widget.suffixIcon == null && showIconClear.value && widget.isShowIcClear) {
       return InkWell(
         onTap: clearText,
         splashColor: Colors.transparent,

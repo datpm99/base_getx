@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/mixin/load_more_mixin.dart';
 import 'models/user_model.dart';
 import 'services/unit_test_service.dart';
 
-class UnitTestController extends GetxController {
+class UnitTestController extends GetxController with LoadMoreMixin {
   final _service = UnitTestService();
-  final scrollController = ScrollController();
-
   List<User> lstUser = [];
-  int page = 1;
-  bool isLoading = true;
-  bool isLoadMore = true;
-  bool isLoadData = true;
 
-  Future<void> getListUser() async {
+  @override
+  Future<void> getData() async {
     var data = {
       "page": page,
       "per_page": 10,
@@ -34,27 +30,14 @@ class UnitTestController extends GetxController {
     update();
   }
 
-  void loadMoreUser() {
-    scrollController.addListener(() async {
-      bool canLoadMore = (scrollController.position.extentAfter == 0);
-      if (canLoadMore && isLoadMore && isLoadData) {
-        page++;
-        isLoadData = false;
-        update();
-        await getListUser();
-        isLoadData = true;
-      }
-    });
+  @override
+  void updateData() {
+    update();
   }
 
-  Future<void> onRefresh() async {
+  Future<void> onRefreshData() async {
     lstUser.clear();
-    page = 1;
-    isLoading = true;
-    isLoadMore = true;
-    isLoadData = true;
-    update();
-    getListUser();
+    refreshData();
   }
 
   //Counter.
@@ -67,8 +50,8 @@ class UnitTestController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    loadMoreUser();
-    getListUser();
+    loadMoreData();
+    getData();
   }
 
   @override

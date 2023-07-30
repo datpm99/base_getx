@@ -23,7 +23,7 @@ class UnitTestView extends StatelessWidget {
               isLoading: c.isLoading,
               itemCount: c.lstUser.length,
               scrollController: c.scrollController,
-              onRefresh: c.onRefresh,
+              onRefresh: c.onRefreshData,
               showIndicatorLoadMore: (!c.isLoadData),
               child: (ctx, index) {
                 return Container(

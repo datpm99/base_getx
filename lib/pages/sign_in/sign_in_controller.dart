@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '/const/import_const.dart';
@@ -49,5 +50,6 @@ class SignInController extends GetxController {
     super.onReady();
     phone.value = '0987654321';
     password.value = '123456';
+    debugPrint('test');
   }
 }

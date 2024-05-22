@@ -15,7 +15,7 @@ class AppNative {
 
     if (GetPlatform.isAndroid) {
       var deviceData = await deviceInfo.androidInfo;
-      return '${deviceData.manufacturer}|${deviceData.model}|${deviceData.androidId}';
+      return '${deviceData.manufacturer}|${deviceData.model}|${deviceData.id}';
     }
 
     return '';
@@ -23,7 +23,7 @@ class AppNative {
 
   static Future<String> getVersionName() async {
     final packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo.version + '+' + packageInfo.buildNumber;
+    return '${packageInfo.version}+${packageInfo.buildNumber}';
   }
 
   static Future<void> makePhoneCall(String number) async {
@@ -50,6 +50,7 @@ class AppNative {
     }
   }
 
+  //https://play.google.com/store/account/subscriptions?hl=vi&gl=US
   static Future<void> openAppInStore(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);

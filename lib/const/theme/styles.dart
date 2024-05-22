@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'themes.dart';
 
 class Styles {
@@ -55,12 +53,15 @@ class Styles {
   static const grey23 = Color(0xFF777777);
   static const grey24 = Color(0xFF9D9D9D);
   static const grey25 = Color(0xFFF3F3F3);
+  static const grey26 = Color(0xff818181);
+  static const grey27 = Color(0xffD9D9D9);
 
   //Black.
   static const black1 = Color(0xff252733);
   static const black2 = Color(0xff22242C);
   static const black3 = Color(0xff323F4B);
   static const black4 = Color(0xff778390);
+  static Color black5 = Colors.black.withOpacity(0.25);
 
   //Blue.
   static const blue1 = Color(0xffEFF8FF);
@@ -105,6 +106,7 @@ class Styles {
   static const green7 = Color(0xFF18CF18);
   static const green8 = Color(0xff217b56);
   static const green9 = Color(0xffbdd7cc);
+  static const green10 = Color(0xff46B450);
 
   //Yellow.
   static const yellow = Color(0xffFFAF2E);
@@ -127,9 +129,9 @@ class Styles {
   ///TextStyles.
   static TextStyle getTextStyle(color, double font, fontWeight) => TextStyle(
         color: color,
-        fontSize: font.sp,
+        fontSize: font,
         fontWeight: fontWeight,
-        fontFamily: GoogleFonts.mulish().fontFamily,
+        fontFamily: 'Roboto',
       );
 
   //Small.
@@ -215,24 +217,18 @@ class Styles {
   }) =>
       TextStyle(
         color: color,
-        fontSize: size.sp,
+        fontSize: size,
         fontWeight: fWeight,
         decoration: TextDecoration.underline,
-        fontFamily: GoogleFonts.mulish().fontFamily,
+        fontFamily: 'Roboto',
       );
 
   ///Border TextField.
-  static OutlineInputBorder inputBorder30({Color color = grey13}) {
+  static OutlineInputBorder inputBorder(
+      {Color color = grey13, double radius = 8, double borderWidth = 1}) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: BorderSide(color: color, width: 1),
-    );
-  }
-
-  static OutlineInputBorder inputBorder8({Color color = grey13}) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: color, width: 0.5),
+      borderRadius: BorderRadius.circular(radius),
+      borderSide: BorderSide(color: color, width: borderWidth),
     );
   }
 
@@ -264,6 +260,26 @@ class Styles {
     ];
   }
 
+  static List<BoxShadow> boxShadow3() {
+    return [
+      const BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.05),
+        blurRadius: 28,
+        offset: Offset(0, 9),
+      ),
+      const BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.06),
+        blurRadius: 6,
+        offset: Offset(0, 3),
+      ),
+      const BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.06),
+        blurRadius: 16,
+        offset: Offset(0, 6),
+      ),
+    ];
+  }
+
   ///BoxDecoration.
   static BoxDecoration boxDecoration1(
       {double radius = 8, Color color = Colors.white}) {
@@ -289,6 +305,20 @@ class Styles {
         topLeft: Radius.circular(radius),
         topRight: Radius.circular(radius),
       ),
+    );
+  }
+
+  static InputDecoration inputDecoration1(
+      {String hint = '', Color borderColor = grey27, double radius = 6}) {
+    return InputDecoration(
+      isDense: true,
+      hintText: hint.tr,
+      hintStyle: normalText(color: black5),
+      border: inputBorder(color: borderColor, radius: radius),
+      enabledBorder: inputBorder(color: borderColor, radius: radius),
+      focusedBorder: inputBorder(color: Colors.lightBlueAccent, radius: radius),
+      focusedErrorBorder: inputBorder(color: Colors.redAccent, radius: radius),
+      errorBorder: inputBorder(color: Colors.redAccent, radius: radius),
     );
   }
 }

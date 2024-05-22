@@ -12,11 +12,6 @@ class AppValidation {
     return '';
   }
 
-  static String? username(String? val) {
-    if (val!.trim().isEmpty) return 'msg_empty'.trParams({'label': 'full_name'.tr});
-    return null;
-  }
-
   static String? phone(String? val) {
     val = val!.trim();
     RegExp regex = RegExp(

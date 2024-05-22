@@ -40,7 +40,7 @@ const Map<String, String> langVi = {
   //OTP
   'otp_verification': 'Xác nhận mã OTP',
   'otp_sent_code':
-      'Vui lòng nhập mã xác thực đã gửi về số điện thoại của bạn @phone',
+  'Vui lòng nhập mã xác thực đã gửi về số điện thoại của bạn @phone',
   'otp_expires_in': 'Mã xác nhận hết hạn trong',
   'otp_expired': 'Mã xác nhận đã hết hạn',
   'otp_resend': 'Gửi lại mã OTP',
@@ -62,7 +62,7 @@ const Map<String, String> langVi = {
 
   //Message notify.
   'msg_verification_code':
-      'Vui lòng nhập mã xác thực đã gửi đến email đăng ký tài khoản của bạn',
+  'Vui lòng nhập mã xác thực đã gửi đến email đăng ký tài khoản của bạn',
   'msg_required_code': 'Vui lòng nhập mã xác thực',
   'msg_verification_email': 'Vui lòng nhập email đã đăng ký tài khoản của bạn',
   'msg_empty': '@label là bắt buộc',
@@ -70,11 +70,11 @@ const Map<String, String> langVi = {
   'msg_download_file': 'File không hỗ trợ tải xuống!',
   'msg_length_pass': '@label phải chứa ít nhất 8 kí tự',
   'msg_pass_invalid':
-      '@label phải chứa ký tự hoa, thường, số và ký tự đặc biệt',
+  '@label phải chứa ký tự hoa, thường, số và ký tự đặc biệt',
   'msg_match_pass': 'Mật khẩu xác nhận khác với Mật khẩu mới',
   'msg_required': 'Vui lòng nhập thông tin',
   'msg_error_reason': 'Bạn chưa nhập lý do',
   'msg_close_app': 'Bạn có muốn thoát ứng dụng không?',
   'msg_pass_rule1':
-      'Mật khẩu phải từ 8 - 50 ký tự, chứa ký tự hoa, thường, số và ký tự đặc biệt bao gồm: *@#\$%^&+=',
+  'Mật khẩu phải từ 8 - 50 ký tự, chứa ký tự hoa, thường, số và ký tự đặc biệt bao gồm: *@#\$%^&+=',
 };

@@ -4,21 +4,21 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '/const/import_const.dart';
+import '/const/common_export.dart';
 import '/lang/lang_controller.dart';
 import '/routes/routes.dart';
-import '/widgets/images/cus_image_icon.dart';
-import '/widgets/loaders.dart';
+import '/widget/loaders.dart';
 
 class AppUtils {
   static final lang = Get.find<LangController>();
-  static final logger = Logger(printer: PrettyPrinter(lineLength: 100, colors: true, printTime: false));
-  static final loggerNoStack = Logger(
-      printer: PrettyPrinter(methodCount: 0, lineLength: 100, colors: true, printTime: false));
+  static final storage = Get.find<StorageService>();
+  static final logger = Logger();
+  static final loggerNoStack = Logger(printer: PrettyPrinter(methodCount: 0));
 
   /// System.
   static Future<void> hideLoader() async {
@@ -32,38 +32,49 @@ class AppUtils {
     );
   }
 
+  static void showLogDebug(String msg) {
+    loggerNoStack.d(msg);
+  }
+
+  static void showLogWarning(String msg) {
+    loggerNoStack.w(msg);
+  }
+
+  static void showLogError(String msg) {
+    logger.e(msg);
+  }
+
   static void showError(String message, {bool isClose = true}) {
     if (Get.isDialogOpen! && isClose) Get.back();
     Get.snackbar(
       'error'.tr,
       message,
-      borderRadius: 0,
-      duration: const Duration(seconds: 3),
-      colorText: Colors.white,
-      backgroundColor: Styles.red1,
-      animationDuration: 0.45.seconds,
-      forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
-      reverseAnimationCurve: Curves.easeOutExpo,
-      overlayColor: Colors.black26,
+      borderWidth: 0,
+      borderRadius: 8,
       overlayBlur: .1,
-      margin: const EdgeInsets.symmetric(vertical: 0),
+      overlayColor: Colors.black26,
+      backgroundColor: Colors.white,
+      animationDuration: 0.45.seconds,
+      reverseAnimationCurve: Curves.easeOutExpo,
+      forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
+      margin: EdgeInsets.zero,
       snackStyle: SnackStyle.FLOATING,
-      snackPosition: SnackPosition.BOTTOM,
-      padding: EdgeInsets.zero,
-      messageText: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const CusImageIcon(asset: 'assets/icons/ic_alert_error.png'),
-              const SizedBox(width: 10),
-              Text(message, style: Styles.normalTextW600()).expand()
-            ],
-          ).pSymmetric(h: 22, v: 19),
-          Container(height: 3, color: Styles.red2)
-        ],
-      ),
+      snackPosition: SnackPosition.TOP,
+      padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 16),
+      maxWidth: Get.width - 32,
       titleText: const SizedBox.shrink(),
+      boxShadows: Styles.boxShadow3(),
+      messageText: Row(
+        children: [
+          SvgPicture.asset('assets/icons/ic_error.svg'),
+          const SizedBox(width: 8),
+          Text(message, style: Styles.normalText(color: Styles.red6)).expand(),
+          GestureDetector(
+            onTap: Get.back,
+            child: const Icon(Icons.close, color: Styles.grey26, size: 20),
+          ),
+        ],
+      ).pOnly(bottom: 6),
     );
   }
 
@@ -72,39 +83,29 @@ class AppUtils {
     Get.snackbar(
       'success'.tr,
       message,
-      borderRadius: 0,
-      colorText: Styles.black1,
-      backgroundColor: Styles.green1,
+      borderWidth: 0,
+      borderRadius: 4,
+      backgroundColor: Styles.green10,
       animationDuration: 0.45.seconds,
-      duration: const Duration(seconds: 3),
+      overlayBlur: .1,
+      overlayColor: Colors.black26,
       forwardAnimationCurve: Curves.fastLinearToSlowEaseIn,
       reverseAnimationCurve: Curves.easeOutExpo,
-      overlayColor: Colors.black26,
-      overlayBlur: .1,
-      margin: const EdgeInsets.symmetric(vertical: 0),
       snackStyle: SnackStyle.FLOATING,
-      snackPosition: SnackPosition.BOTTOM,
-      padding: EdgeInsets.zero,
-      messageText: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const CusImageIcon(asset: 'assets/icons/ic_alert_success.png'),
-              const SizedBox(width: 10),
-              Text(message, style: Styles.normalTextW600()).expand(),
-            ],
-          ).pSymmetric(h: 22, v: 19),
-          Container(height: 3, color: Styles.green2)
-        ],
-      ),
+      snackPosition: SnackPosition.TOP,
+      margin: EdgeInsets.zero,
+      maxWidth: Get.width - 32,
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       titleText: const SizedBox.shrink(),
+      messageText: Row(
+        children: [
+          SvgPicture.asset('assets/icons/ic_check_circle.svg'),
+          const SizedBox(width: 8),
+          Text(message, style: Styles.normalTextW500(color: Colors.white))
+              .expand(),
+        ],
+      ).pOnly(bottom: 6),
     );
-  }
-
-  static Future<void> closeNotify() async {
-    await 3.7.delay();
-    //Get.back();
   }
 
   static String getPlatForm() {
@@ -114,42 +115,47 @@ class AppUtils {
   }
 
   /// Authentication.
+  // static void setTokenAndTimeOut(LoginModel model) {
+  //   //DateTime expirationDate = JwtDecoder.getExpirationDate(model.accessToken);
+  //   DateTime expirationDate = DateTime.now().add(const Duration(minutes: 150));
+  //
+  //   storage.accessToken = model.accessToken;
+  //   storage.refreshToken = model.refreshToken;
+  //   storage.tokenTimeout = expirationDate.toString();
+  // }
+
   static bool validateTokenTimeout() {
-    final _storage = Get.find<StorageService>();
-    String tokenTimeout = _storage.tokenTimeout;
-    DateTime now = DateTime.now();
-    if (tokenTimeout.isEmpty) return false;
+    if (storage.tokenTimeout.isEmpty) return false;
+    DateTime now = DateTime.now().add(const Duration(minutes: 3));
 
     //Check current time <= timeout return false
-    DateTime? timeOut = DateTime.tryParse(tokenTimeout);
+    DateTime? timeOut = DateTime.tryParse(storage.tokenTimeout);
     return timeOut!.isAfter(now);
   }
 
-  static void logout() async {
-    final _storage = Get.find<StorageService>();
-    _storage.authModel = '';
-    _storage.apiToken = '';
-    _storage.tokenTimeout = '';
+  static void logout({bool showMess = false}) async {
+    if (Get.isDialogOpen!) Get.back();
+    //if (storage.accessToken.isEmpty) return;
+    storage.accessToken = '';
+    storage.refreshToken = '';
+    storage.tokenTimeout = '';
     Get.offAllNamed(Routes.signIn);
+
+    Future.delayed(const Duration(seconds: 1), () {
+      if (showMess && !Get.isDialogOpen!) showError('msg_session_timeout');
+    });
   }
 
   /// File.
-  static Future<File> writeFile(var data) async {
+  static Future<File> writeFile(Uint8List data) async {
     Directory tempDir = await getTemporaryDirectory();
-    var filePath = tempDir.path + '/file_01.png';
+    var filePath = '${tempDir.path}/file_01.png';
     return File(filePath).writeAsBytes(data);
   }
 
-  static Future<String> writeFilePdf(Uint8List dataPdf, int id) async {
+  static Future<String> writeFile2(String dataPdf, int id) async {
     Directory tempDir = await getTemporaryDirectory();
-    var filePath = tempDir.path + '/file_$id.pdf';
-    File filePdf = await File(filePath).writeAsBytes(dataPdf);
-    return filePdf.path;
-  }
-
-  static Future<String> writeFilePdfEDoc(String dataPdf, int id) async {
-    Directory tempDir = await getTemporaryDirectory();
-    var filePath = tempDir.path + '/file_$id.pdf';
+    var filePath = '${tempDir.path}/file_$id.pdf';
     Uint8List bytes = base64.decode(dataPdf);
     File filePdf = await File(filePath).writeAsBytes(bytes);
     return filePdf.path;
@@ -160,45 +166,6 @@ class AppUtils {
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
     var i = (log(fileSize) / log(1024)).floor();
     return ((fileSize / pow(1024, i)).toStringAsFixed(round)) + suffixes[i];
-  }
-
-  /// Image.
-  static bool checkFormatImage(String path) {
-    String image = path.split('.').last.toLowerCase();
-    return (image == 'png' || image == 'jpg');
-  }
-
-  /// Utils.
-  static String getFirstCharacter(String name) {
-    if (name.isEmpty) return '';
-    name = name.trim();
-    String lastWord = name.substring(name.lastIndexOf(" ") + 1);
-    return lastWord[0].toUpperCase();
-  }
-
-  static String formatCountDoc(int val) {
-    if (val < 100) return '$val';
-    return '99+';
-  }
-
-  static String shortNameFile(String text) {
-    if (text.isEmpty) return '';
-    if (!text.contains('-')) return text;
-    if (text.length <= 15) return text;
-    return text.substring(0, 15) + ' ...';
-  }
-
-  /// Error api.
-  static void showMessApi(var result, String nameFunc) {
-    if (result != null && result.message.isNotEmpty) {
-      AppUtils.showError(result.message);
-      return;
-    }
-
-    if (result == null) {
-      debugPrint('error ---> $nameFunc');
-      AppUtils.showError('msg_have_error'.tr);
-    }
   }
 
   /// Color selectBox.
@@ -219,22 +186,11 @@ class AppUtils {
     return phone;
   }
 
-  static String rdImg() {
-    int rd = Random().nextInt(50);
-    if (rd == 0) rd = 1;
-    return 'assets/icons/ic_$rd.png';
-  }
-
-  /// Logger.
-  static void showLogInfo(String msg) {
-    loggerNoStack.d(msg);
-  }
-
-  static void showLogWarning(String msg) {
-    loggerNoStack.w(msg);
-  }
-
-  static void showLogError(String msg) {
-    logger.e(msg);
+  /// Utils.
+  static String getFirstCharacter(String name) {
+    if (name.isEmpty) return '';
+    name = name.trim();
+    String lastWord = name.substring(name.lastIndexOf(" ") + 1);
+    return lastWord[0].toUpperCase();
   }
 }

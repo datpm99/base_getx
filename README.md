@@ -7,8 +7,8 @@ This is a sample project based on GetX.
 * Handle call API (base on Dio).
 
 ## Requirement
-* Flutter Version: 2.10.5.
-* Dart SDK: 2.16.2.
+* Flutter Version: 3.19.6.
+* Dart SDK: 3.3.4.
 * IDE: Android Studio or Visual Code.
 
 #### Knowledge
@@ -25,8 +25,6 @@ flutter pub get
 ```
 
 ## Project Structure
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fstructure_base_getx.png?alt=media&token=bface6b4-981c-462b-b2ae-e2c2d9dca6ae"/>
-
 - ```const```: Includes app configuration such as Theme, Role,... .<br>
 - ```lang```: Includes file languages.<br>
 - ```models```: Includes model common.<br>
@@ -353,16 +351,6 @@ TimeOfDay time = TimeOfDay.now();
 var result = await TimeFormatter.timePicker(context, time);
 ```
 
-#### SingletonRole
-Check user permissions. The user will not be able to use the functions without permission.
-
-How to use.
-
-```dart
-// Return boolean.
-SingletonRole().taskCreate()
-```
-
 #### AppUtils
 Definition of utility methods is used a lot.
 
@@ -557,46 +545,6 @@ class LoginView extends StatelessWidget with AdaptivePage{
 }
 ```
 
-## Preview
-<p align="left" width="100%">
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview1.png?alt=media&token=4b46c9e2-fa55-4768-be01-ea25d183ed1a" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview2.png?alt=media&token=9261830f-de0d-4109-be89-965b67b1f2ee" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview3.png?alt=media&token=b8c6423f-6e26-48ea-9d3d-3e56ff4068f1" width="200" height="432" />
-<img src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Finterview4.png?alt=media&token=e321121c-332b-4b41-9c99-11f81bdf3dec" width="200" height="432" />
-</p>
-
-## Drawer
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fdrawer.png?alt=media&token=a3ab4a6e-d56a-4885-9741-53b78b5b8d4f" width="200" height="432"/>
-
-```dart
-//Drawer.
-ClipPath(
-clipper: OvalRightBorderClipper(),
-clipBehavior: Clip.antiAliasWithSaveLayer,
-child: Drawer(),
-);
-
-class OvalRightBorderClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, 0);
-    path.lineTo(size.width - 50, 0);
-    path.quadraticBezierTo(
-        size.width, size.height / 4, size.width, size.height / 2);
-    path.quadraticBezierTo(size.width, size.height - (size.height / 4),
-        size.width - 40, size.height);
-    path.lineTo(0, size.height);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return true;
-  }
-}
-```
-
 ## CheckBox
 <img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcheckbox.png?alt=media&token=cae3f43a-a663-4dac-b7e8-f1521adeba6b" width="200" height="432"/>
 
@@ -622,162 +570,4 @@ Container(
         ),
     ),
 ),
-```
-
-## Chip
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fchip.png?alt=media&token=6c705ddc-5c02-4e4d-bc99-fe150b3fb756" width="200" height="432"/>
-
-```dart
-FilterChip(
-  label: Text('Item $index'),
-  labelStyle: Styles.normalText(color: Colors.white),
-  shape: const StadiumBorder(side: BorderSide(width: 0.5)),
-  selected: (controller.filterChip.value == index),
-  selectedColor: Styles.primaryColor,
-  checkmarkColor: Colors.white,
-  onSelected: (val) => controller.onChangedFilterChip(index),
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-## ColorFiltered
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcolorfilter.png?alt=media&token=19c982a9-702b-4b82-a656-60f0f31d762e" width="200" height="432"/>
-
-```dart
-ColorFiltered(
-  colorFilter: const ColorFilter.mode(
-    Colors.grey,
-    BlendMode.saturation,
-  ),
-  child: Image.asset('assets/images/avatar1.jpeg'),
-),
-
-ColorFiltered(
-  colorFilter: const ColorFilter.mode(
-    Colors.grey,
-    BlendMode.multiply,
-  ),
-  child: Image.asset('assets/images/avatar1.jpeg'),
-),
-
-
-
-
-
-
-
-
-
-```
-
-## Cupertino Context Menu
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fcontextmenu.png?alt=media&token=fea1423a-b9dd-4d60-8333-8c287ad5509e" width="200" height="432"/>
-
-```dart
-CupertinoContextMenu(
-  child: Container(
-    height: 190,
-    width: Get.width,
-    margin: const EdgeInsets.all(16.0),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset('assets/images/avatar1.jpeg', fit: BoxFit.cover),
-    ),
-  ),
-  actions: <Widget>[
-    CupertinoContextMenuAction(
-      child: Text('Copy', style: Styles.normalText()),
-      isDefaultAction: true,
-      trailingIcon: Icons.content_copy,
-      onPressed: () => Get.back(),
-    ),
-    CupertinoContextMenuAction(
-      child: Text('Share', style: Styles.normalText()),
-      trailingIcon: Icons.share,
-      onPressed: () => Get.back(),
-    ),
-    CupertinoContextMenuAction(
-      child: Text('Delete', style: Styles.normalText()),
-      trailingIcon: Icons.delete,
-      onPressed: () => Get.back(),
-    ),
-  ],
-),
-
-```
-
-## Cupertino Sliding Segmented Control
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fsliding_segmented.png?alt=media&token=c0a6b03f-70a9-42ee-ab7f-b4ac9cf1f96d" width="200" height="432"/>
-
-```dart
-Column(
-  children: [
-    Container(
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(16.0),
-      child: CupertinoSlidingSegmentedControl(
-        children: {
-          0: Text(
-            'Home',
-            style: Styles.normalText(color: (c.sliding == 0) ? Colors.black : Colors.grey),
-          ).p(8),
-          1: Text(
-            'Booking',
-            style: Styles.normalText(color: (c.sliding == 1) ? Colors.black : Colors.grey),
-          ).p(8),
-          2: Text(
-            'Setting',
-            style: Styles.normalText(color: (c.sliding == 2) ? Colors.black : Colors.grey),
-          ).p(8),
-        },
-        groupValue: c.sliding,
-        onValueChanged: c.onValueChanged,
-      ),
-    ),
-    if (c.sliding == 0) mPage("Home"),
-    if (c.sliding == 1) mPage("Booking"),
-    if (c.sliding == 2) mPage("Setting"),
-  ],
-)
-
-```
-
-## ShowCase View
-<img align="left" src="https://firebasestorage.googleapis.com/v0/b/demofirebase-5d7b7.appspot.com/o/base_getx%2Fshowcase.png?alt=media&token=ae0cdb3a-e759-4c1d-a521-8e534cda0609" width="200" height="432"/>
-
-```dart
-Showcase(
-  key: controller.two,
-  title: 'Profile',
-  description: "Tap to see profile which contains user's name.",
-  showcaseBackgroundColor: Colors.pinkAccent,
-  textColor: Colors.white,
-  shapeBorder: const CircleBorder(),
-  child: Container(
-    padding: const EdgeInsets.all(5),
-    width: 45,
-    height: 45,
-    decoration: const BoxDecoration(
-      shape: BoxShape.circle,
-      color: Colors.pinkAccent,
-    ),
-    child: const Icon(Icons.star),
-  ),
-),
-
-
-
-
 ```

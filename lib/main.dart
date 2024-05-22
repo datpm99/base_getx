@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/services/services.dart';
+import '/service/services.dart';
 import 'app.dart';
 
 void main() async {

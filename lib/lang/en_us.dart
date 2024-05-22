@@ -40,7 +40,7 @@ const Map<String, String> langEn = {
   //OTP
   'otp_verification': 'Confirm OTP',
   'otp_sent_code':
-      'Please enter the verification code sent to your phone number @phone',
+  'Please enter the verification code sent to your phone number @phone',
   'otp_expires_in': 'Verification code expires in',
   'otp_expired': 'Verification code has expired',
   'otp_resend': 'Resend OTP',
@@ -62,7 +62,7 @@ const Map<String, String> langEn = {
 
   //Message notify.
   'msg_verification_code':
-      'Please enter the verification code sent to your account',
+  'Please enter the verification code sent to your account',
   'msg_required_code': 'Please enter the verification code',
   'msg_verification_email': 'Please enter your registered email address',
   'msg_empty': '@label is required',
@@ -70,11 +70,11 @@ const Map<String, String> langEn = {
   'msg_download_file': 'File does not support download!',
   'msg_length_pass': '@label must contain at least 8 characters',
   'msg_pass_invalid':
-      '@label must contain uppercase, lowercase, numbers and special characters',
+  '@label must contain uppercase, lowercase, numbers and special characters',
   'msg_match_pass': 'Confirm Password is different from New Password',
   'msg_required': 'Please enter information',
   'msg_error_reason': 'You have not entered a reason',
   'msg_close_app': 'Do you want to exit the application?',
   'msg_pass_rule1':
-      'The password must be between 8 - 50 characters, contain uppercase, lowercase, numeric, and special characters including: *@#\$%^&+=',
+  'The password must be between 8 - 50 characters, contain uppercase, lowercase, numeric, and special characters including: *@#\$%^&+=',
 };

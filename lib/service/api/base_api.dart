@@ -61,10 +61,7 @@ class BaseApi {
   void printResponse(Response response) {
     final prettyString =
         const JsonEncoder.withIndent('  ').convert(response.data);
-    debugPrint(prettyString);
-    debugPrint(
-        '------------------------------ END ------------------------------');
-    debugPrint('\n');
+    AppUtils.showLogInfo(prettyString);
   }
 
   validateSessionTimeout(String path) {

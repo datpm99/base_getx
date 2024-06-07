@@ -36,6 +36,10 @@ class AppUtils {
     loggerNoStack.d(msg);
   }
 
+  static void showLogInfo(String msg) {
+    loggerNoStack.d(msg);
+  }
+
   static void showLogWarning(String msg) {
     loggerNoStack.w(msg);
   }

@@ -50,6 +50,7 @@ dependencies:
   #Animation.
   flutter_staggered_animations: 1.1.1
   liquid_pull_to_refresh: 3.0.1
+  skeletons: ^0.0.3
 
   #Utils.
   tiengviet: 1.0.0
